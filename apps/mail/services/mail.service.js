@@ -1,6 +1,6 @@
-import { storageService } from "../../../services/async-storage.service"
-import { utilService } from "../../../services/util.service"
-import { mailData } from "./mail.data"
+import { storageService } from "../../../services/async-storage.service.js"
+import { utilService } from "../../../services/util.service.js"
+import { mailData } from "./mail.data.js"
 // mail service
 
 const MAIL_KEY = "mailDB"
