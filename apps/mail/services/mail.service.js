@@ -33,8 +33,8 @@ function query(filterBy = {}) {
     if (filterBy.isRead) {
       mails = mails.filter((mail) => mail.isRead === filterBy.isRead)
     }
-    if (filterBy.isStared) {
-      mails = mails.filter((mail) => mail.isStared === filterBy.isStared)
+    if (filterBy.isStarred) {
+      mails = mails.filter((mail) => mail.isStarred === filterBy.isStarred)
     }
     if (filterBy.status === "inbox") {
       mails = mails.filter(
@@ -43,7 +43,7 @@ function query(filterBy = {}) {
     }
     if (filterBy.status === "sent") {
       mails = mails.filter(
-        (mail) => mail.from === loggedinUser.email && !mail.removedAt,
+        (mail) => mail.to === loggedinUser.email && !mail.removedAt,
       )
     }
     if (filterBy.status === "trash") {
@@ -87,8 +87,8 @@ function getEmptyMail(
     subject,
     body,
     isRead: false,
-    isStared: false,
-    sentAt: new Date().toISOString(),
+    isStarred: false,
+    sentAt: new Date(),
     labels: [],
     removedAt: null,
     from,
@@ -112,10 +112,10 @@ function _createMail(subject, body) {
 
 function _setNextPrevMailId(mail) {
   return storageService.query(MAIL_KEY).then((mails) => {
-    const carIdx = mails.findIndex((currMail) => currMail.id === mail.id)
-    const nextMail = mails[carIdx + 1] ? mails[carIdx + 1] : mails[0]
-    const prevMail = mails[carIdx - 1]
-      ? mails[carIdx - 1]
+    const mailIdx = mails.findIndex((currMail) => currMail.id === mail.id)
+    const nextMail = mails[mailIdx + 1] ? mails[mailIdx + 1] : mails[0]
+    const prevMail = mails[mailIdx - 1]
+      ? mails[mailIdx - 1]
       : mails[mails.length - 1]
     mail.nextMailId = nextMail.id
     mail.prevMailId = prevMail.id
@@ -141,9 +141,8 @@ function getFilterFromSearchParams(searchParams) {
 function getDefaultFilter(
   filterBy = {
     txt: "",
-    status: "",
     isRead: false,
-    isStared: false,
+    isStarred: false,
     labels: [],
   },
 ) {
@@ -151,7 +150,7 @@ function getDefaultFilter(
     txt: filterBy.txt,
     status: filterBy.status,
     isRead: filterBy.isRead,
-    isStared: filterBy.isStared,
+    isStarred: filterBy.isStarred,
     labels: filterBy.labels,
   }
 }

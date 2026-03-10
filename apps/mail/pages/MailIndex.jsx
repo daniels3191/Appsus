@@ -5,6 +5,9 @@ const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
+import { MailList } from "../cmps/MailList.jsx"
+import { MailFolderList } from "../cmps/MailFolderList.jsx"
+import { MailFilter } from "../cmps/MailFilter.jsx"
 
 export function MailIndex() {
   const [mails, setMails] = useState(null)
@@ -14,14 +17,22 @@ export function MailIndex() {
     mailService.getFilterFromSearchParams(searchParams),
   )
   function loadMails() {
-    return mailService.query(filterBy).then(setMails)
+    mailService.query(filterBy).then(setMails)
   }
+
+  function onClearFilter() {
+    setFilterBy({ ...mailService.getDefaultFilter(), status: filterBy.status })
+  }
+
+  useEffect(() => {
+    setFilterBy(mailService.getFilterFromSearchParams(searchParams))
+  }, [searchParams])
+
   useEffect(() => {
     loadMails()
     setSearchParams(utilService.trimObj(filterBy))
   }, [filterBy])
-  
-  console.log(mails);
+
   if (!mails) {
     return (
       <div className="loader">
@@ -29,5 +40,15 @@ export function MailIndex() {
       </div>
     )
   }
-  return <section className="container">Mail app</section>
+  return (
+    <section className="container">
+      <MailFolderList />
+      <MailFilter
+        filterBy={filterBy}
+        onSetFilterBy={setFilterBy}
+        onClearFilter={onClearFilter}
+      />
+      <MailList mails={mails} />
+    </section>
+  )
 }

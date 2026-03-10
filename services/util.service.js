@@ -9,6 +9,7 @@ export const utilService = {
   loadFromStorage,
   saveToStorage,
   trimObj,
+  formatDate,
 }
 
 function saveToStorage(key, val) {
@@ -124,4 +125,18 @@ function trimObj(obj) {
     if (obj[key]) trimmedObj[key] = obj[key]
   }
   return trimmedObj
+}
+
+function formatDate(date) {
+  date = new Date(date)
+  const options = { day: "2-digit", month: "2-digit", year: "numeric" }
+  const sevenDays = 1000 * 60 * 60 * 24 * 7
+  const fullYear = 1000 * 60 * 60 * 24 * 365
+  const currDate = new Date()
+  if (currDate - sevenDays < date) return getDayName(date)
+  else if (currDate - fullYear <= date) {
+    return `${new Date(date).getDate()} ${getMonthName(date)}`
+  } else {
+    return new Date(date).toLocaleDateString(undefined, options)
+  }
 }
