@@ -35,7 +35,7 @@ export function MailFilter({ filterBy, onSetFilterBy, onClearFilter }) {
         name="txt"
         placeholder="Search Mail"
       />
-      <label for="isRead">isRead</label>
+      <label htmlFor="isRead">isRead</label>
       <input
         onChange={(ev) => handleChange(ev)}
         checked={filterByToEdit.isRead}
@@ -43,7 +43,7 @@ export function MailFilter({ filterBy, onSetFilterBy, onClearFilter }) {
         name="isRead"
         id="isRead"
       />
-      <label for="isStarred">isStarred</label>
+      <label htmlFor="isStarred">isStarred</label>
       <input
         onChange={(ev) => handleChange(ev)}
         checked={filterByToEdit.isStarred}
