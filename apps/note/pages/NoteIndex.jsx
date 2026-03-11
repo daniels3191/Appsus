@@ -38,7 +38,7 @@ export function NoteIndex() {
 
     return <section className="notes-index">
         Notes app
-        <NoteEdit />
+        <NoteEdit loadNotes={loadNotes}/>
         <NoteList notes={notes} onRemoveNote={removeNote}/>
     </section>
 }
