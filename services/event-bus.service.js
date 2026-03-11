@@ -1,4 +1,4 @@
-function createEventEmitter() {
+function _createEventEmitter() {
     const listenersMap = {}
     return {
         on(evName, listener) {
@@ -14,7 +14,7 @@ function createEventEmitter() {
     }
 }
 
-export const eventBusService = createEventEmitter()
+export const eventBusService = _createEventEmitter()
 
 // Functions for easily showing msgs
 export function showUserMsg(msg) {

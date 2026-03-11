@@ -1,1 +1,13 @@
  /* note index */
+
+ .notes-index{
+    background-color: whitesmoke;
+ }
+
+
+ .loader {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    margin-block-start: 200px;
+}
