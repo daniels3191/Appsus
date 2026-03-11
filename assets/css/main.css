@@ -7,9 +7,20 @@
 @import "./cmps/UserMsg.css";
 @import "./cmps/AppHeader.css";
 
-@import "./apps/note/NoteIndex.css";
-@import "./apps/mail/MailIndex.css";
-@import "./apps/mail/MailList.css";
+
+
+
 @import "./apps//mail/MailFolderList.css";
 @import "./apps//mail/MailFilter.css";
 @import "./apps/mail/MailPreview.css";
+
+
+@import './apps/mail/MailIndex.css';
+@import './apps/mail/MailList.css';
+
+
+/* Note app */
+
+@import './apps/note/NoteIndex.css';
+@import './apps/note/base/reset.css';
+@import './apps/note/AddNote.css';
