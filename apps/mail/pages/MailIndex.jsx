@@ -24,6 +24,11 @@ export function MailIndex() {
     setFilterBy({ ...mailService.getDefaultFilter(), status: filterBy.status })
   }
 
+  function onStar(mail) {
+    const updatedMail = { ...mail, isStarred: !mail.isStarred }
+    mailService.save(updatedMail).then(loadMails)
+  }
+
   useEffect(() => {
     setFilterBy(mailService.getFilterFromSearchParams(searchParams))
   }, [searchParams])
@@ -42,13 +47,19 @@ export function MailIndex() {
   }
   return (
     <section className="container">
+      <Link to="/mail?status=inbox">
+        <div className="logo">
+          <img src="/apps/mail/icons/logo.svg" alt="" />
+          <span>Gmail</span>
+        </div>
+      </Link>
       <MailFolderList />
       <MailFilter
         filterBy={filterBy}
         onSetFilterBy={setFilterBy}
         onClearFilter={onClearFilter}
       />
-      <MailList mails={mails} />
+      <MailList mails={mails} onStar={onStar} />
     </section>
   )
 }

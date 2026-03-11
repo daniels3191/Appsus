@@ -1,18 +1,8 @@
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 108px;
-    padding-right: 10px;
-    margin-bottom: 10px;
+.mail-folder-list {
+  grid-area: menu;
 }
 
-.logo img {
-  width: 32px;
-  /* height: 40px; */
-}
-.logo span {
-    max-width: 100%;
-  font-size: 18px;
-  color: #606468;
+.mail-folder-list nav{
+  display: flex;
+  flex-direction: column;
 }

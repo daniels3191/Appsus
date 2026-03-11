@@ -27,7 +27,6 @@ export function MailFilter({ filterBy, onSetFilterBy, onClearFilter }) {
 
   return (
     <section className="mail-filter">
-      <p>Filter:</p>
       <input
         onChange={(ev) => handleChange(ev)}
         value={filterByToEdit.txt}
