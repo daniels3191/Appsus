@@ -1,12 +1,20 @@
 const { useState, useEffect } = React
-const { useParams, useNavigate } = ReactRouterDOM
+const { useParams } = ReactRouterDOM
 
 import { noteService } from '../services/note.service.js'
 
 export function NoteEdit({ loadNotes }) {
 
     const [note, setNote] = useState(noteService.getEmptyNote())
+    const params = useParams()
 
+
+        useEffect(() => {
+        if (params.id) {
+            noteService.get(params.id)
+                .then(setNote)
+        }
+    }, [params.id])
 
     function handleChange({ target }) {
         const { type, name, value } = target
