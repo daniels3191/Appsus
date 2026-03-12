@@ -22,18 +22,28 @@ export function MailPreview({ mail, onStar }) {
       <span className={`mail-date ${!mail.isRead ? "font-bold" : ""}`}>
         {utilService.formatDate(mail.sentAt)}
       </span>
-      
+
       <div className="mail-actions">
-        <button className="btn-remove">
-          <i title="Delete" className="fa-regular fa-trash-can"></i>
+        <button className="action">
+          <span title="Delete" className="action material-symbols-outlined">
+            delete
+          </span>
         </button>
-        <span className="mail-state">
-        {mail.isRead ? (
-          <i title="Mark as unread" className="fa-regular fa-envelope"></i>
-        ) : (
-          <i title="Mark as read" className="fa-regular fa-envelope-open"></i>
-        )}
-      </span>
+        <button className="action">
+          {mail.isRead ? (
+            <span
+              title="Mark as unread"
+              className="action material-symbols-outlined"
+            >
+              mark_email_unread
+            </span>
+          ) : (
+            <span className="action material-symbols-outlined">
+              mark_email_read
+            </span>
+          )}
+        </button>
+        <span className="action material-symbols-outlined">archive</span>
       </div>
     </section>
   )
