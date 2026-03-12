@@ -10,6 +10,8 @@
 
 .mail-menu {
   grid-area: menu;
+  overflow: hidden;
+  transition: all 0.3 ease;
   width: 100%;
   max-width: 256px;
   padding-top: 8px;
