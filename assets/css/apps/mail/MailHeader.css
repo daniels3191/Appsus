@@ -32,7 +32,7 @@
   align-items: center;
   flex: 1 1 auto;
 
-  border: 1px solid ;
+  border: 1px solid;
   border-radius: 24px;
 
   height: 48px;
@@ -43,20 +43,20 @@
 }
 .mail-search input {
   flex: 1;
-   border: none;
+  border: none;
   background: transparent;
   outline: none;
   font-size: 16px;
   color: rgb(32, 33, 36);
 }
 .mail-search-icon {
-    color: #444746;
+  color: #444746;
   flex-shrink: 0;
 }
 .mail-header .action:last-child {
   margin-left: auto;
 }
 
-.mail-menu-icon{
-    margin-right: 10px;
+.mail-menu-icon {
+  margin-right: 10px;
 }

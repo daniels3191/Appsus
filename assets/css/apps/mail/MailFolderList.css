@@ -3,7 +3,6 @@
   align-items: center;
   height: 32px;
   padding: 0 12px 0 16px;
-  /* transition: background-color 0.15s ease; */
   span {
     margin-right: 10px;
   }
@@ -11,8 +10,6 @@
 
 .mail-menu {
   grid-area: menu;
-  overflow: hidden;
-  transition: all 0.3 ease;
   width: 100%;
   max-width: 256px;
   padding-top: 8px;

@@ -3,8 +3,13 @@
 
 export function MailCompose() {
   return (
-    <section className="mail-compose">
-      <span>compose</span>
+    <section className="mail-compose-container">
+      <div className="mail-compose">
+        <button className="mail-compose-btn">
+          <span className="material-symbols-outlined">edit</span>
+          Compose
+        </button>
+      </div>
     </section>
   )
 }

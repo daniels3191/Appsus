@@ -9,7 +9,9 @@
 
   .mail-menu {
     width: 140px;
+    overflow: hidden;
   }
+
   .mail-menu.closed {
     width: 0;
   }
@@ -17,14 +19,25 @@
     transform: translateX(-100%);
   }
 
-  .mail-header .logo{
+  .mail-header .logo {
     min-width: unset;
   }
-  .mail-header .logo span{
+  .mail-header .logo span {
     display: none;
   }
 
-  .mail-search{
+  .mail-search {
     max-width: 100%;
+  }
+  .mail-folder-list nav a {
+    span {
+      margin-right: 5px;
+    }
+  }
+  .container.menu-closed nav a.active {
+    background-color: white;
+  }
+  .container.menu-closed .mail-compose-btn {
+    background-color: white;
   }
 }
