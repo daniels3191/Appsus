@@ -1,6 +1,7 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+.notes-index{
 
 html {
     color-scheme: light dark;
@@ -36,4 +37,5 @@ a[class] {
 input, button, textarea, select {
     max-width: 100%;
     font: inherit;
+}
 }

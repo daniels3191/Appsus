@@ -28,3 +28,4 @@
 @import './apps/note/base/reset.css';
 @import './apps/note/base/layout.css';
 @import './apps/note/NoteEdit.css';
+@import './apps/note/NoteFilter.css';

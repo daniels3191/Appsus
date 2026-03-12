@@ -11,7 +11,8 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
-    getFilterFromSearchParms
+    getFilterFromSearchParms,
+    getDefaultFilter
 }
 
 // For Debug (easy access from console):
@@ -20,7 +21,14 @@ export const noteService = {
 function query(filterBy = {}) {
 
     return storageService.query(NOTES_KEY)
-        .then(notes => { return notes })
+        .then(notes => { 
+            
+            if (filterBy.txt) {
+                const regExp = new RegExp(filterBy.txt, 'i')
+                notes = notes.filter(note => (regExp.test(note.info.title) || regExp.test(note.info.txt) ))
+            }
+            
+            return notes })
 }
 
 function get(noteId) {

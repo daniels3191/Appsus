@@ -11,17 +11,19 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
-    const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParms(searchParams))
-
+    // const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParms(searchParams))
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
+    
+    
 
     useEffect(() => {
         loadNotes()
-        setSearchParams(utilService.trimObj())
+        // setSearchParams(utilService.trimObj())
     }, [filterBy])
 
     function loadNotes() {
 
-        return noteService.query()
+        return noteService.query(filterBy)
             .then(notes => {
                 setNotes(notes)
             })
@@ -38,6 +40,7 @@ export function NoteIndex() {
 
             })
     }
+    
 
     if (!notes) {
         return <div className="loader">
