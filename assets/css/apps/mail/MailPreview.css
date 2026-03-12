@@ -3,7 +3,9 @@
   align-items: center;
   gap: 8px;
 
-  height: 20px;
+  /* flex: 0 0 auto; */
+
+  /* height: 20px; */
   width: 100%;
   padding: 10px 0;
   line-height: 20px;
@@ -37,7 +39,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   flex-shrink: 0;
-  max-width: 200px;
+  max-width: 168px;
+  flex-basis: 168px;
+  padding-right: 32px;
 }
 .mail-star {
   width: 20px;
@@ -45,11 +49,63 @@
 }
 
 .mail-date {
+  display: block;
   font-size: 0.75rem;
   color: rgb(95, 99, 104);
-  
+
   flex-shrink: 0;
 
   margin-left: auto;
   text-align: right;
+}
+
+.mail-actions {
+  display: none;
+}
+
+.mail-preview:hover {
+  box-shadow:
+    inset 1px 0 0 rgb(218, 220, 224),
+    inset -1px 0 0 rgb(218, 220, 224),
+    0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+
+  .mail-date {
+    display: none;
+  }
+
+  .mail-actions {
+    display: flex;
+    gap: 1em;
+    margin-left: auto;
+    &:last-child {
+      margin-right: 1em;
+    }
+  }
+  .action {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    &::before {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      inset: -10px;
+      transform: scale(1);
+      background-color: transparent;
+    }
+    &:hover::before {
+      background-color: rgba(32, 33, 36, 0.06);
+    }
+  }
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 20
 }
