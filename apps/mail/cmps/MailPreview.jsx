@@ -3,7 +3,7 @@
 // • Gives visual indication for read/unread
 // • Support hover state
 
-import { utilService } from "../../../services/util.service.jsx"
+import { utilService } from "../../../services/util.service.js"
 
 export function MailPreview({ mail, onStar }) {
   return (
@@ -22,10 +22,19 @@ export function MailPreview({ mail, onStar }) {
       <span className={`mail-date ${!mail.isRead ? "font-bold" : ""}`}>
         {utilService.formatDate(mail.sentAt)}
       </span>
-      {/* <span className="mail-state">{mail.isRead ? "Read" : "Unread"}</span> */}
-      {/* <div className="actions">
-        <button className="btn-remove">R</button>
-      </div> */}
+      
+      <div className="mail-actions">
+        <button className="btn-remove">
+          <i title="Delete" className="fa-regular fa-trash-can"></i>
+        </button>
+        <span className="mail-state">
+        {mail.isRead ? (
+          <i title="Mark as unread" className="fa-regular fa-envelope"></i>
+        ) : (
+          <i title="Mark as read" className="fa-regular fa-envelope-open"></i>
+        )}
+      </span>
+      </div>
     </section>
   )
 }
