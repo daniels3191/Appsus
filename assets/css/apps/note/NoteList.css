@@ -1,1 +1,24 @@
  /* note list */
+
+  .notes-list{
+    margin-block-start: 30px;
+  }
+
+ .notes-list ul{
+    margin: 0;
+ }
+
+ .note-container{
+        background-color: #fff;
+    border: 1px solid transparent;
+    border-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+ }
+
+
+
+ .note-container .action-container {
+    padding: 4px 4px;
+
+}

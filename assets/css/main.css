@@ -22,5 +22,9 @@
 /* Note app */
 
 @import './apps/note/NoteIndex.css';
+@import './apps/note/NoteHeader.css';
+@import './apps/note/NoteList.css';
+@import './apps/note/NotPreview.css';
 @import './apps/note/base/reset.css';
-@import './apps/note/AddNote.css';
+@import './apps/note/base/layout.css';
+@import './apps/note/NoteEdit.css';

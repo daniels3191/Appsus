@@ -9,7 +9,7 @@ export function NoteEdit({ loadNotes }) {
     const params = useParams()
 
 
-        useEffect(() => {
+    useEffect(() => {
         if (params.id) {
             noteService.get(params.id)
                 .then(setNote)
@@ -18,8 +18,6 @@ export function NoteEdit({ loadNotes }) {
 
     function handleChange({ target }) {
         const { type, name, value } = target
-        console.log(name, value);
-
 
         setNote(prev => ({
             ...prev,
@@ -37,29 +35,42 @@ export function NoteEdit({ loadNotes }) {
 
                 console.log(`Note ${note.id} has been saved`);
                 loadNotes()
-                setNote(noteService.getEmptyNote())
+                clear()
             })
             .catch(err => showErrorMsg(`Couldn't save ${note.id}`))
     }
 
+    function clear() {
+        setNote(noteService.getEmptyNote())
+    }
 
-    return <form className="note-edit" onSubmit={onSaveNote}>
-        <input type="text"
-            placeholder="Title"
-            id="title"
-            name="title"
-            value={note.info.title}
-            onChange={handleChange} />
 
-        <input type="text"
-            placeholder="Take a note..."
-            id="txt"
-            name="txt"
-            value={note.info.txt}
-            onChange={handleChange} />
+    return <div className="note-edit-container">
+        <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote}>
+            <input type="text"
+                placeholder="Title"
+                id="title"
+                name="title"
+                value={note.info.title}
+                onChange={handleChange} />
 
-        <button>save</button>
-    </form>
+            <input type="text"
+                placeholder="Take a note..."
+                id="txt"
+                name="txt"
+                value={note.info.txt}
+                onChange={handleChange} />
+        </form>
+        <div className="action-container">
+            <button type="submit" form="note-edit-form">Save</button>
+            <button onClick={clear}>Clear</button>
+        </div>
+
+
+    </div>
+
+
+
 
 
 

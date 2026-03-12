@@ -10,7 +10,8 @@ export const noteService = {
     get,
     remove,
     save,
-    getEmptyNote
+    getEmptyNote,
+    getFilterFromSearchParms
 }
 
 // For Debug (easy access from console):
@@ -57,6 +58,20 @@ function getEmptyNote() {
     }
 }
 
+function getFilterFromSearchParms(searchParams){
+    const defaultFilter = getDefaultFilter()
+    const filterby ={}
+    for (const field in defaultFilter) {
+        filterby[field] = searchParams.get(field) || ''   
+    }
+    return filterby
+}
+
+function getDefaultFilter(filterBy = {txt: ''}){
+    return {txt: filterBy.txt}
+    
+}
+
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY)
 
@@ -85,7 +100,7 @@ function _createNotes() {
                 },
                 info: {
                     title: 'Go Bobi',
-                    txt: 'Bobi and Me'
+                    txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illo ut ipsa cum. Deleniti magni porro consectetur, autem officiis nisi, officia similique omnis asperiores est rem iure veniam vel dolor!'
                     // url: 'http://some-img/me',
                     // title: 'Bobi and Me'
                 }
@@ -109,6 +124,21 @@ function _createNotes() {
                     //     },
                     //     { txt: 'Coding power', isDone: false }
                     // ]
+                }
+            },
+            {
+                id: 'n104',
+                createdAt: 1112223,
+                type: 'NoteTxt',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#0d0'
+                },
+                info: {
+                    title: 'Dodido',
+                    txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illo ut ipsa cum. Deleniti magni porro consectetur, autem officiis nisi, officia similique omnis asperiores est rem iure veniam vel dolor!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illo ut ipsa cum. Deleniti magni porro consectetur, autem officiis nisi, officia similique omnis asperiores est rem iure veniam vel dolor!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illo ut ipsa cum. Deleniti magni porro consectetur, autem officiis nisi, officia similique omnis asperiores est rem iure veniam vel dolor!'
+                    // url: 'http://some-img/me',
+                    // title: 'Bobi and Me'
                 }
             }
         ]

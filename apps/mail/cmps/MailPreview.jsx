@@ -3,7 +3,7 @@
 // • Gives visual indication for read/unread
 // • Support hover state
 
-import { utilService } from "../../../services/util.service.jsx"
+import { utilService } from "../../../services/util.service.js"
 
 export function MailPreview({ mail, onStar }) {
   return (

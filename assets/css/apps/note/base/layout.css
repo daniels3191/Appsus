@@ -1,0 +1,19 @@
+
+.index-main-layout{
+    
+}
+
+
+.notes-list {
+    column-count: auto;
+    column-width: 240px;
+    column-gap: 10px;
+
+    .note-container {
+        margin-block-end: 10px;
+        border-radius: 15px;
+        break-inside: avoid-column;
+        page-break-inside: avoid;
+
+    }
+}
