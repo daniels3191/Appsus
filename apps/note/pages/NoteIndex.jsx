@@ -48,11 +48,12 @@ export function NoteIndex() {
         </div>
     }
 
-    return <section className="notes-index">
+    return <section className="notes-index index-main-layout">
         <NoteHeader
             filterBy={filterBy}
             setFilterBy={setFilterBy}
         />
+        <div className="nav-bar">nav</div>
         <div className="note-main">
             <NoteEdit loadNotes={loadNotes} />
             <NoteList notes={notes} onRemoveNote={removeNote} />

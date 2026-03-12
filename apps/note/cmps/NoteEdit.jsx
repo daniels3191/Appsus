@@ -1,5 +1,6 @@
 const { useState, useEffect } = React
 const { useParams } = ReactRouterDOM
+const { Link } = ReactRouterDOM
 
 import { noteService } from '../services/note.service.js'
 
@@ -23,9 +24,11 @@ export function NoteEdit({ loadNotes }) {
             ...prev,
             info: {
                 ...prev.info,
-                [name]: type === 'text' ? value : +value
+                [name]: type === 'textarea' ? value : +value
             }
         }))
+        
+        
     }
 
     function onSaveNote(ev) {
@@ -33,7 +36,6 @@ export function NoteEdit({ loadNotes }) {
         noteService.save(note)
             .then(note => {
 
-                console.log(`Note ${note.id} has been saved`);
                 loadNotes()
                 clear()
             })
@@ -42,28 +44,33 @@ export function NoteEdit({ loadNotes }) {
 
     function clear() {
         setNote(noteService.getEmptyNote())
+
     }
 
 
     return <div className="note-edit-container">
         <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote}>
-            <input type="text"
+            <textarea type="text"
                 placeholder="Title"
                 id="title"
                 name="title"
                 value={note.info.title}
-                onChange={handleChange} />
+                onChange={handleChange}
+                rows="1" />
 
-            <input type="text"
+            <textarea type="text"
                 placeholder="Take a note..."
                 id="txt"
                 name="txt"
                 value={note.info.txt}
-                onChange={handleChange} />
+                onChange={handleChange}
+                rows="1"  />
         </form>
         <div className="action-container">
             <button type="submit" form="note-edit-form">Save</button>
+            <Link to={'/note/'}>
             <button onClick={clear}>Clear</button>
+            </Link>
         </div>
 
 

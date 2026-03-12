@@ -1,7 +1,26 @@
 
 .index-main-layout{
-    
+    display: grid;
+    grid-template-columns: 80px 1fr;
+
+   .note-header{
+    grid-column: 1 / -1;
+   }
+
+   .nav-bar{
+    grid-column: 1 / 2;
+   }
+
+   .note-main{
+    grid-column: 2 / 3;
+   }
 }
+
+.note-main{
+    display: grid;
+    grid-template-columns: ;
+}
+
 
 
 .notes-list {
