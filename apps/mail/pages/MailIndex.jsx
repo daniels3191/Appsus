@@ -8,14 +8,18 @@ import { utilService } from "../../../services/util.service.js"
 import { MailList } from "../cmps/MailList.jsx"
 import { MailFolderList } from "../cmps/MailFolderList.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
+import { MailHeader } from "../cmps/MailHeader.jsx"
+import { MailCompose } from "../cmps/MailCompose.jsx"
 
 export function MailIndex() {
+  const [isMenuOpen, setIsMenuOpen] = useState(true)
   const [mails, setMails] = useState(null)
   const [searchParams, setSearchParams] = useSearchParams()
 
   const [filterBy, setFilterBy] = useState(
     mailService.getFilterFromSearchParams(searchParams),
   )
+
   function loadMails() {
     mailService.query(filterBy).then(setMails)
   }
@@ -29,6 +33,9 @@ export function MailIndex() {
     mailService.save(updatedMail).then(loadMails)
   }
 
+  function onToggleMenu() {
+    setIsMenuOpen((prev) => !prev)
+  }
   useEffect(() => {
     setFilterBy(mailService.getFilterFromSearchParams(searchParams))
   }, [searchParams])
@@ -46,20 +53,24 @@ export function MailIndex() {
     )
   }
   return (
-    <section className="container">
-      <Link to="/mail?status=inbox">
-        <div className="logo">
-          <img src="/apps/mail/icons/logo.svg" alt="" />
-          <span>Gmail</span>
-        </div>
-      </Link>
-      <MailFolderList />
-      <MailFilter
+    <section className={`container ${isMenuOpen ? "" : "menu-closed"}`}>
+      <MailHeader
         filterBy={filterBy}
         onSetFilterBy={setFilterBy}
-        onClearFilter={onClearFilter}
+        onToggleMenu={onToggleMenu}
       />
-      <MailList mails={mails} onStar={onStar} />
+      <div className="mail-menu">
+        <MailCompose />
+        <MailFolderList />
+      </div>
+      <div className="mail-content">
+        <MailFilter
+          filterBy={filterBy}
+          onSetFilterBy={setFilterBy}
+          onClearFilter={onClearFilter}
+        />
+        <MailList mails={mails} onStar={onStar} />
+      </div>
     </section>
   )
 }

@@ -1,0 +1,30 @@
+@media (max-width: 810px) {
+  .container {
+    grid-template-columns: 180px 1fr;
+    grid-template-areas:
+      "header header"
+      "menu content";
+    height: 100vh;
+  }
+
+  .mail-menu {
+    width: 140px;
+  }
+  .mail-menu.closed {
+    width: 0;
+  }
+  .container.menu-closed .mail-menu {
+    transform: translateX(-100%);
+  }
+
+  .mail-header .logo{
+    min-width: unset;
+  }
+  .mail-header .logo span{
+    display: none;
+  }
+
+  .mail-search{
+    max-width: 100%;
+  }
+}

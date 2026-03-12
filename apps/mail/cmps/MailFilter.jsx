@@ -19,21 +19,11 @@ export function MailFilter({ filterBy, onSetFilterBy, onClearFilter }) {
     const { value, name, type, checked } = ev.target
     // console.log({ value, name, type, checked })
 
-    setFilterByToEdit((prev) => ({
-      ...prev,
-      [name]: type === "search" ? value : checked,
-    }))
+    setFilterByToEdit((prev) => ({ ...prev, [name]: checked }))
   }
 
   return (
     <section className="mail-filter">
-      <input
-        onChange={(ev) => handleChange(ev)}
-        value={filterByToEdit.txt}
-        type="search"
-        name="txt"
-        placeholder="Search Mail"
-      />
       <label htmlFor="isRead">isRead</label>
       <input
         onChange={(ev) => handleChange(ev)}
