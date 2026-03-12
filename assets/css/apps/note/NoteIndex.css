@@ -1,1 +1,22 @@
  /* note index */
+
+ .notes-index {
+     color: rgb(32, 33, 36);
+     direction: ltr;
+     font-family: "Roboto", arial, sans-serif;
+     font-size: 15px;
+     background-color: #fff;
+ }
+
+ .note-main {
+     display: grid;
+     margin: 10px 10px;
+ }
+
+
+ .loader {
+     display: flex;
+     justify-content: center;
+     width: 200px;
+     margin-block-start: 200px;
+ }

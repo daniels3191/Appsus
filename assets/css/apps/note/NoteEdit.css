@@ -1,0 +1,36 @@
+.note-edit-container {
+    justify-self: center;
+    width:600px ;
+    max-width: 600px;
+    min-width: 200px;
+    
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-color: #e0e0e0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    border-radius: 8px;
+     overflow: hidden;
+
+}
+
+.note-edit-form {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.note-edit-form :first-child {
+    padding: 16px 16px 0px 16px;
+    border: none;
+}
+
+.note-edit-form :last-child {
+    padding: 12px 16px;
+    border: none;
+}
+
+
+.note-edit-container .action-container {
+    padding: 4px 4px;
+
+}
