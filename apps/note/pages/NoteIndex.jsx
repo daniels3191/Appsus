@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
 
 import { utilService } from '../../../services/util.service.js'
+import { NavBar } from '../cmps/NavBar.jsx'
 import { NoteEdit } from '../cmps/NoteEdit.jsx'
 import { NoteHeader } from '../cmps/NoteHeader.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
@@ -48,11 +49,12 @@ export function NoteIndex() {
         </div>
     }
 
-    return <section className="notes-index">
+    return <section className="notes-index index-main-layout">
         <NoteHeader
             filterBy={filterBy}
             setFilterBy={setFilterBy}
         />
+        <NavBar />
         <div className="note-main">
             <NoteEdit loadNotes={loadNotes} />
             <NoteList notes={notes} onRemoveNote={removeNote} />

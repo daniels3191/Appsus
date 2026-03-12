@@ -34,4 +34,8 @@ input, button, textarea, select {
     max-width: 100%;
     font: inherit;
 }
+
+textarea{
+    resize: none;
+}
 }

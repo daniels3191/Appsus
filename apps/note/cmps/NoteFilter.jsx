@@ -1,5 +1,7 @@
 const { useState, useEffect } = React
 
+import { noteService } from '../services/note.service.js'
+
 export function NoteFilter({ filterBy, setFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
@@ -14,6 +16,12 @@ export function NoteFilter({ filterBy, setFilterBy }) {
         setFilterByToEdit(prev => ({...prev, txt: value}))
     }
 
+    function onClear(){
+        
+        setFilterByToEdit(noteService.getDefaultFilter())
+
+    }
+
 
 
     return <div className="note-filter">
@@ -22,6 +30,8 @@ export function NoteFilter({ filterBy, setFilterBy }) {
             onChange={ev => handleChange(ev)}
             name="txt"
             placeholder="Search" />
+
+            <button onClick={onClear}>x</button>
     </div>
 
 
