@@ -1,6 +1,9 @@
 .note-edit-container {
     justify-self: center;
-    width: 600px;
+    width:600px ;
+    max-width: 600px;
+    min-width: 200px;
+    
     background-color: #fff;
     border: 1px solid transparent;
     border-color: #e0e0e0;

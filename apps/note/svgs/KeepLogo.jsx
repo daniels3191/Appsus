@@ -1,5 +1,6 @@
 export function KeepLogo() {
     return (
+        
         <img
             className="gb_0c gb_ae"
             src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
@@ -9,5 +10,10 @@ export function KeepLogo() {
             role="presentation"
             style={{ width: "40px", height: "40px" }}
         />
+            //    <a class="gb_de gb_Vc" aria-label="Keep" href="?authuser=0" tabindex="0">
+            // <img 
+            // class="gb_0c gb_ae" src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" srcset="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png 1x, https://www.gstatic.com/images/branding/product/2x/keep_2020q4_48dp.png 2x " alt="" aria-hidden="true" role="presentation" style="width:40px;height:40px">
+            // <span class="gb_Qd gb_qd">Keep</span>
+            // </a>
     );
 }
