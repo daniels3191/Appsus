@@ -1,10 +1,10 @@
  /* note list */
 
-  .notes-list{
+  .notes-list-container{
     margin-block-start: 30px;
   }
 
- .notes-list ul{
+ .notes-list-container ul{
     margin: 0;
  }
 

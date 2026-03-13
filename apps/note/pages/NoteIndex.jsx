@@ -12,14 +12,12 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
-    // const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParms(searchParams))
-    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
-    
-    
+    const [filterBy, setFilterBy] =
+        useState(noteService.getFilterFromSearchParms(searchParams))
 
     useEffect(() => {
         loadNotes()
-        // setSearchParams(utilService.trimObj())
+        setSearchParams(utilService.trimObj(filterBy))
     }, [filterBy])
 
     function loadNotes() {
@@ -41,7 +39,7 @@ export function NoteIndex() {
 
             })
     }
-    
+
 
     if (!notes) {
         return <div className="loader">
@@ -49,15 +47,17 @@ export function NoteIndex() {
         </div>
     }
 
-    return <section className="notes-index index-main-layout">
-        <NoteHeader
-            filterBy={filterBy}
-            setFilterBy={setFilterBy}
-        />
-        <NavBar />
-        <div className="note-main">
-            <NoteEdit loadNotes={loadNotes} />
-            <NoteList notes={notes} onRemoveNote={removeNote} />
-        </div>
-    </section>
+    return (
+        <section className="notes-index index-main-layout">
+            <NoteHeader
+                filterBy={filterBy}
+                setFilterBy={setFilterBy}
+            />
+            <NavBar />
+            <div className="note-main">
+                <NoteEdit loadNotes={loadNotes} />
+                <NoteList notes={notes} onRemoveNote={removeNote} />
+            </div>
+        </section>
+    )
 }

@@ -1,18 +1,18 @@
- /* note index */
+
+/* note index */
 
  .notes-index {
      font-family: "Roboto", arial, sans-serif;
      direction: ltr;
      font-size: 15px;
      color: rgb(32, 33, 36);
-
      background-color: #fff;
-     margin-block-start: 10px;
  }
+
 
  .note-main {
      display: grid;
-     margin: 10px 10px;
+     /* margin: 10px 10px; */
  }
 
 

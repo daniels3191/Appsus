@@ -18,15 +18,15 @@
 
 .note-main{
     display: grid;
-    grid-template-columns: ;
 }
 
 
 
-.notes-list {
+.notes-list-container ul {
     column-count: auto;
     column-width: 240px;
     column-gap: 10px;
+    margin: 0 auto;
 
     .note-container {
         margin-block-end: 10px;
