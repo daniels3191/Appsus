@@ -10,10 +10,11 @@ export const utilService = {
   saveToStorage,
   trimObj,
   formatDate,
+  normalizeHex
 }
 
 function saveToStorage(key, val) {
-  
+
   localStorage.setItem(key, JSON.stringify(val))
 }
 
@@ -140,4 +141,11 @@ function formatDate(date) {
   } else {
     return new Date(date).toLocaleDateString(undefined, options)
   }
+}
+
+function normalizeHex(hex) {
+  if (/^#[0-9a-fA-F]{3}$/.test(hex)) {
+    return "#" + hex.slice(1).split("").map(c => c + c).join("");
+  }
+    return hex;
 }

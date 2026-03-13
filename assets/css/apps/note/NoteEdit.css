@@ -4,14 +4,19 @@
     min-width: 200px;
     max-width: 600px;
 
-
-
     background-color: #fff;
     border: 1px solid transparent;
     border-color: #e0e0e0;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
     border-radius: 8px;
     overflow: hidden;
+
+    margin-block-start: 32px;
+    margin-block-end: 16px;
+
+    textarea{
+        background-color: inherit;
+    }
 
 }
 

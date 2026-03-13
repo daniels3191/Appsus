@@ -1,5 +1,6 @@
 const { useState, useEffect } = React
-const { Link, useSearchParams } = ReactRouterDOM
+const { Link, useSearchParams, Route, Routes  } = ReactRouterDOM
+const Router = ReactRouterDOM.HashRouter
 
 import { utilService } from '../../../services/util.service.js'
 import { NavBar } from '../cmps/NavBar.jsx'
@@ -14,8 +15,8 @@ export function NoteIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     // const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParms(searchParams))
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
-    
-    
+
+
 
     useEffect(() => {
         loadNotes()
@@ -41,7 +42,7 @@ export function NoteIndex() {
 
             })
     }
-    
+
 
     if (!notes) {
         return <div className="loader">
@@ -49,15 +50,17 @@ export function NoteIndex() {
         </div>
     }
 
-    return <section className="notes-index index-main-layout">
+    return (
+        <section className="notes-index index-main-layout">
         <NoteHeader
             filterBy={filterBy}
             setFilterBy={setFilterBy}
         />
-        <NavBar />
+            <NavBar />
         <div className="note-main">
             <NoteEdit loadNotes={loadNotes} />
             <NoteList notes={notes} onRemoveNote={removeNote} />
         </div>
     </section>
+    ) 
 }

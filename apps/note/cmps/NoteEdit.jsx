@@ -3,12 +3,12 @@ const { useParams } = ReactRouterDOM
 const { Link } = ReactRouterDOM
 
 import { noteService } from '../services/note.service.js'
+import { utilService } from '../../../services/util.service.js'
 
 export function NoteEdit({ loadNotes }) {
 
     const [note, setNote] = useState(noteService.getEmptyNote())
     const params = useParams()
-
 
     useEffect(() => {
         if (params.id) {
@@ -25,17 +25,18 @@ export function NoteEdit({ loadNotes }) {
             info: {
                 ...prev.info,
                 [name]: type === 'textarea' ? value : +value
+            },
+             style: {
+                ...prev.style,
+                [name]: value
             }
         }))
-        
-        
     }
 
     function onSaveNote(ev) {
         ev.preventDefault()
         noteService.save(note)
             .then(note => {
-
                 loadNotes()
                 clear()
             })
@@ -47,9 +48,8 @@ export function NoteEdit({ loadNotes }) {
 
     }
 
-
-    return <div className="note-edit-container">
-        <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote}>
+    return <div className="note-edit-container" style={note.style}>
+        <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote} >
             <textarea type="text"
                 placeholder="Title"
                 id="title"
@@ -64,22 +64,15 @@ export function NoteEdit({ loadNotes }) {
                 name="txt"
                 value={note.info.txt}
                 onChange={handleChange}
-                rows="1"  />
+                rows="1" />
         </form>
         <div className="action-container">
             <button type="submit" form="note-edit-form">Save</button>
             <Link to={'/note/'}>
-            <button onClick={clear}>Clear</button>
+                <button onClick={clear}>Clear</button>
             </Link>
+            <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
+                className="backgroundcolor-input" onChange={handleChange} />
         </div>
-
-
     </div>
-
-
-
-
-
-
-
 }

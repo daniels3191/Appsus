@@ -1,9 +1,14 @@
 import { BulbIcon } from "../svgs/bulbIcon.jsx";
 
-export function NavBar(){
+export function NavBar() {
 
-    return  <React.Fragment>
-        <BulbIcon/>
-         </React.Fragment>
+    return (
+        <div className="nav-bar">
+            <div className="buble-ican">
+                <BulbIcon />
+            </div>
+
+        </div>
+    )
 
 }

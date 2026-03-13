@@ -1,6 +1,7 @@
 const { useState, useEffect } = React
 
 import { noteService } from '../services/note.service.js'
+import { XForClearButton } from '../svgs/XForClearButton.jsx'
 
 export function NoteFilter({ filterBy, setFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
@@ -25,13 +26,14 @@ export function NoteFilter({ filterBy, setFilterBy }) {
 
 
     return <div className="note-filter">
+
         <input type="text"
             value={filterByToEdit.txt}
             onChange={ev => handleChange(ev)}
             name="txt"
             placeholder="Search" />
 
-            <button onClick={onClear}>x</button>
+            <button className="btn-clear" onClick={onClear}><XForClearButton/></button>
     </div>
 
 
