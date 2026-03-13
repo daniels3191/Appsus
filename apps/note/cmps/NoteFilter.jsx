@@ -5,6 +5,7 @@ import { XForClearButton } from '../svgs/XForClearButton.jsx'
 
 export function NoteFilter({ filterBy, setFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+console.log(filterBy);
 
     
     useEffect(() => {
@@ -14,7 +15,7 @@ export function NoteFilter({ filterBy, setFilterBy }) {
 
     function handleChange({target}){
         const { type, name, value } = target
-        setFilterByToEdit(prev => ({...prev, txt: value}))
+        setFilterByToEdit(prev => ({...prev, [name]: value}))
     }
 
     function onClear(){
@@ -34,6 +35,17 @@ export function NoteFilter({ filterBy, setFilterBy }) {
             placeholder="Search" />
 
             <button className="btn-clear" onClick={onClear}><XForClearButton/></button>
+
+               <label htmlFor="type">Note Type:</label>
+        <select id="type" name="type" type='text'
+            value={filterByToEdit.type}
+            onChange={ev => handleChange(ev)}>
+            <option value="">All</option>
+            <option value="NoteTxt">Text</option>
+            <option value="NoteImg">Image</option>
+            <option value="NoteVideos">Video</option>
+            <option value="NoteTodos">Todos</option>
+        </select>
     </div>
 
 

@@ -27,6 +27,9 @@ function query(filterBy = {}) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 notes = notes.filter(note => (regExp.test(note.info.title) || regExp.test(note.info.txt) ))
             }
+            if (filterBy.type) {
+                notes = notes.filter(note => note.type === filterBy.type)
+            }
             
             return notes })
 }
@@ -75,8 +78,8 @@ function getFilterFromSearchParms(searchParams){
     return filterby
 }
 
-function getDefaultFilter(filterBy = {txt: ''}){
-    return {txt: filterBy.txt}
+function getDefaultFilter(filterBy = {txt: '', type: ''}){
+    return {txt: filterBy.txt, type: filterBy.type}
     
 }
 
