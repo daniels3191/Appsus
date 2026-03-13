@@ -11,6 +11,9 @@ import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailHeader } from "../cmps/MailHeader.jsx"
 import { MailCompose } from "../cmps/MailCompose.jsx"
 
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
+import { showErrorMsg } from "../../../services/event-bus.service.js"
+
 export function MailIndex() {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
   const [mails, setMails] = useState(null)
@@ -31,6 +34,40 @@ export function MailIndex() {
   function onStar(mail) {
     const updatedMail = { ...mail, isStarred: !mail.isStarred }
     mailService.save(updatedMail).then(loadMails)
+  }
+
+  function onRead(mail) {
+    const updatedMail = { ...mail, isRead: !mail.isRead }
+    mailService.save(updatedMail).then(loadMails)
+  }
+
+  // function onTrash(mail) {
+  //   const updatedMail = { ...mail, removedAt: new Date() }
+  //   mailService.save(updatedMail).then(loadMails)
+  // }
+
+  function onRemoveMail(mail, mailId) {
+    const mailToRemove = mails.find((mail) => mail.id === mailId)
+
+    if (mailToRemove.removedAt) {
+      mailService
+        .remove(mailId)
+        .then(() => {
+          setMails((prev) => prev.filter((mail) => mail.id !== mailId))
+          showSuccessMsg("Mail Removed.")
+        })
+        .catch((err) => showErrorMsg(`Couldn't remove ${mailId}`))
+    } else {
+      const trashedMail = { ...mail, removedAt: new Date() }
+
+      mailService
+        .save(trashedMail)
+        .then(() => {
+          loadMails()
+          showSuccessMsg("Mail Moved to Trash")
+        })
+        .catch((err) => showErrorMsg(`Couldn't move to trash`))
+    }
   }
 
   function onToggleMenu() {
@@ -69,7 +106,12 @@ export function MailIndex() {
           onSetFilterBy={setFilterBy}
           onClearFilter={onClearFilter}
         />
-        <MailList mails={mails} onStar={onStar} />
+        <MailList
+          mails={mails}
+          onStar={onStar}
+          onRead={onRead}
+          onRemoveMail={onRemoveMail}
+        />
       </div>
     </section>
   )

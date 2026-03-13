@@ -5,7 +5,7 @@
 
 import { utilService } from "../../../services/util.service.js"
 
-export function MailPreview({ mail, onStar }) {
+export function MailPreview({ mail, onStar, onRead, onRemoveMail }) {
   return (
     <section className={`mail-preview ${!mail.isRead ? "" : "unread"}`}>
       <button className="action mail-star" onClick={() => onStar(mail)}>
@@ -28,18 +28,30 @@ export function MailPreview({ mail, onStar }) {
       </span>
 
       <div className="mail-actions">
-        <button title="Delete" className="action">
+        <button
+          title="Delete"
+          className="action"
+          onClick={() => onRemoveMail(mail, mail.id)}
+        >
           <span title="Delete" className="material-symbols-outlined">
             delete
           </span>
         </button>
 
         {mail.isRead ? (
-          <button title="Mark as unread" className="action">
+          <button
+            title="Mark as unread"
+            className="action"
+            onClick={() => onRead(mail)}
+          >
             <span className="material-symbols-outlined">mark_email_unread</span>
           </button>
         ) : (
-          <button title="Mark as read" className="action">
+          <button
+            title="Mark as read"
+            className="action"
+            onClick={() => onRead(mail)}
+          >
             <span className="material-symbols-outlined">mark_email_read</span>
           </button>
         )}
