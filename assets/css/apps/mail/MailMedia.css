@@ -1,0 +1,43 @@
+@media (max-width: 810px) {
+  .container {
+    grid-template-columns: 180px 1fr;
+    grid-template-areas:
+      "header header"
+      "menu content";
+    height: 100vh;
+  }
+
+  .mail-menu {
+    width: 140px;
+    overflow: hidden;
+  }
+
+  .mail-menu.closed {
+    width: 0;
+  }
+  .container.menu-closed .mail-menu {
+    transform: translateX(-100%);
+  }
+
+  .mail-header .logo {
+    min-width: unset;
+  }
+  .mail-header .logo span {
+    display: none;
+  }
+
+  .mail-search {
+    max-width: 100%;
+  }
+  .mail-folder-list nav a {
+    span {
+      margin-right: 5px;
+    }
+  }
+  .container.menu-closed nav a.active {
+    background-color: white;
+  }
+  .container.menu-closed .mail-compose-btn {
+    background-color: white;
+  }
+}

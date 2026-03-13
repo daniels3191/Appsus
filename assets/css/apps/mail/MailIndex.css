@@ -5,30 +5,24 @@
   font-family: "Google Sans", sans-serif;
   font-size: 14px;
   color: rgb(32, 33, 36);
+
   display: grid;
   grid-template-columns: 256px minmax(600px, 1fr);
   grid-template-rows: auto 1fr;
   grid-template-areas:
-    "logo header"
+    "header header"
     "menu content";
+  transition: transform 0.2s ease;
+
+  nav a.active {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #d3e3fd;
+    border-radius: 16px;
+  }
 }
 
-.logo {
-  grid-area: "logo";
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 108px;
-  padding-right: 10px;
-  margin-bottom: 10px;
-}
-
-.logo img {
-  width: 32px;
-  /* height: 40px; */
-}
-.logo span {
-  max-width: 100%;
-  font-size: 18px;
-  color: #606468;
+.container.menu-closed {
+  grid-template-columns: 0 1fr;
 }

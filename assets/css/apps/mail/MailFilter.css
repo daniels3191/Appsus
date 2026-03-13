@@ -1,3 +1,6 @@
 .mail-filter{
-    grid-area: 'header';
+display: flex;
+align-items: center;
+justify-content: start;
+padding: 0 40px;
 }

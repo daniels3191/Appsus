@@ -8,13 +8,17 @@ import { utilService } from "../../../services/util.service.js"
 export function MailPreview({ mail, onStar }) {
   return (
     <section className={`mail-preview ${!mail.isRead ? "" : "unread"}`}>
-      <span className="mail-star" onClick={() => onStar(mail)}>
+      <button className="action mail-star" onClick={() => onStar(mail)}>
         {mail.isStarred ? (
-          <i className="fa-solid fa-star"></i>
+          <i
+            className="fa-solid fa-star"
+            style={{ color: "rgb(255, 212, 59)" }}
+          ></i>
         ) : (
           <i className="fa-regular fa-star"></i>
         )}
-      </span>
+      </button>
+
       <span className={`mail-title ${!mail.isRead ? "font-bold" : ""}`}>
         {mail.subject}
       </span>
@@ -24,26 +28,25 @@ export function MailPreview({ mail, onStar }) {
       </span>
 
       <div className="mail-actions">
-        <button className="action">
-          <span title="Delete" className="action material-symbols-outlined">
+        <button title="Delete" className="action">
+          <span title="Delete" className="material-symbols-outlined">
             delete
           </span>
         </button>
-        <button className="action">
-          {mail.isRead ? (
-            <span
-              title="Mark as unread"
-              className="action material-symbols-outlined"
-            >
-              mark_email_unread
-            </span>
-          ) : (
-            <span className="action material-symbols-outlined">
-              mark_email_read
-            </span>
-          )}
+
+        {mail.isRead ? (
+          <button title="Mark as unread" className="action">
+            <span className="material-symbols-outlined">mark_email_unread</span>
+          </button>
+        ) : (
+          <button title="Mark as read" className="action">
+            <span className="material-symbols-outlined">mark_email_read</span>
+          </button>
+        )}
+
+        <button title="Archive" className="action">
+          <span className="material-symbols-outlined">archive</span>
         </button>
-        <span className="action material-symbols-outlined">archive</span>
       </div>
     </section>
   )
