@@ -5,21 +5,12 @@ import { mailService } from "../services/mail.service.js"
 
 export function MailComposeModal({ toggleIsOpen, onMailSent }) {
   const [mail, setMail] = useState(mailService.getEmptyMail())
-  console.log(mail)
 
   function handleChange({ target }) {
     const { name, value } = target
     setMail((prev) => ({ ...prev, [name]: value }))
   }
 
-  //   const params = useParams()
-  //   const navigate = useNavigate()
-
-  //   useEffect(() => {
-  //     if (params.id) {
-  //       mailService.get(params.id).then(setMail)
-  //     }
-  //   }, [])
   function onSendMail(ev) {
     ev.preventDefault()
     mailService.save(mail).then(() => {
