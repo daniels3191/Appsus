@@ -83,7 +83,7 @@ function getEmptyMail(
   to = "user@appsus.com",
 ) {
   return {
-    id: utilService.makeId(),
+    id: null,
     subject,
     body,
     isRead: false,
@@ -104,7 +104,7 @@ function _createMails() {
   }
 }
 
-function _createMail(subject, body) {
+function createMail(subject, body) {
   const mail = getEmptyMail(subject, body)
   mail.id = utilService.makeId()
   return mail

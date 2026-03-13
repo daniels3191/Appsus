@@ -60,7 +60,7 @@ export function MailIndex() {
         onToggleMenu={onToggleMenu}
       />
       <div className="mail-menu">
-        <MailCompose />
+        <MailCompose onMailSent={loadMails} />
         <MailFolderList />
       </div>
       <div className="mail-content">

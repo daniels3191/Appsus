@@ -16,6 +16,7 @@
 @import "./apps/mail/MailList.css";
 @import "./apps/mail/MailMedia.css";
 @import "./apps/mail/MailCompose.css";
+@import "./apps/mail/MailComposeModal.css";
 
 /* Note app */
 
