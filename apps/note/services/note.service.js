@@ -30,6 +30,9 @@ function query(filterBy = {}) {
             if (filterBy.type) {
                 notes = notes.filter(note => note.type === filterBy.type)
             }
+            if(filterBy.pined){
+                notes = notes.filter(note => !note.isPinned)
+            }
             
             return notes })
 }
@@ -82,6 +85,7 @@ function getDefaultFilter(filterBy = {txt: '', type: ''}){
     return {txt: filterBy.txt, type: filterBy.type}
     
 }
+
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY)

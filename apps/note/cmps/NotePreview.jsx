@@ -1,5 +1,5 @@
 export function NotePreview({ note }) {
-    console.log(note.type);
+    console.log(note.isPinned);
     
 
     return <article className="note-priview" >
