@@ -1,8 +1,5 @@
  /* note list */
 
-  .notes-list-container{
-    margin-block-start: 30px;
-  }
 
  .notes-list-container ul{
     margin: 0;
@@ -16,9 +13,16 @@
     overflow: hidden;
  }
 
-
-
  .note-container .action-container {
     padding: 4px 4px;
 
+}
+
+.notes-container{
+   margin-block-end: 4em;
+
+   p{
+      text-transform: uppercase;
+      margin: 0px;
+   }
 }

@@ -83,7 +83,7 @@ export function NoteIndex() {
             <NavBar />
             <div className="note-main">
                 <NoteEdit loadNotes={loadNotes} />
-                <div className="pinned-note-container">
+                <div className="pinned notes-container">
                     <p>Pinned</p>
                     <NoteList
                         notes={getFilterdPinedNotes(true, notes)}
@@ -91,7 +91,7 @@ export function NoteIndex() {
                         togglePinning={togglePinning}
                         onCopyNote={onCopyNote} />
                 </div>
-                <div className="pinned-note-container">
+                <div className="unpinned notes-container">
                     <p>Others</p>
                     <NoteList
                         notes={getFilterdPinedNotes(false, notes)}
