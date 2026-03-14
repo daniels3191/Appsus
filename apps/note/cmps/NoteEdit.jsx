@@ -69,7 +69,7 @@ export function NoteEdit({ loadNotes }) {
         <div className="action-container">
             <button type="submit" form="note-edit-form">Save</button>
             <Link to={'/note/'}>
-                <button onClick={clear}>Clear</button>
+                <button type="button" onClick={clear}>Clear</button>
             </Link>
             <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
                 className="backgroundcolor-input" onChange={handleChange} />

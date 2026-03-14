@@ -23,6 +23,10 @@
         background: #f0f4f9;
         padding: 11px 0;
         border: 0px;
+
+        &:focus-visible {
+            outline: none;
+        }
     }
 
     .btn-clear::before {
@@ -35,7 +39,7 @@
         width: 40px;
         background-color: rgba(95, 99, 104, 0.157);
         border-radius: 100px;
-        
+
         opacity: 0;
         transition: opacity 0.25s ease-out;
     }

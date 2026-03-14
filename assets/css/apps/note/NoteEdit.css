@@ -14,8 +14,13 @@
     margin-block-start: 32px;
     margin-block-end: 16px;
 
-    textarea{
+    textarea {
         background-color: inherit;
+
+        &:focus-visible {
+            outline: none;
+        }
+
     }
 
 }
