@@ -5,11 +5,8 @@ import { XForClearButton } from '../svgs/XForClearButton.jsx'
 
 export function NoteFilter({ filterBy, setFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-console.log(filterBy);
-
     
     useEffect(() => {
-
         setFilterBy(filterByToEdit)
     }, [filterByToEdit])
 
@@ -19,9 +16,7 @@ console.log(filterBy);
     }
 
     function onClear(){
-        
         setFilterByToEdit(noteService.getDefaultFilter())
-
     }
 
 

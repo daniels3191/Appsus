@@ -50,15 +50,23 @@ export function NoteIndex() {
     }
 
     //QQ: do I need to do the new notes list rendering in a synchronic way? (without calling the service?)
-    function togglePinning(note){
+    function togglePinning(note) {
+
         note.isPinned = !note.isPinned
         noteService.save(note)
-        .then( () => {
-            loadNotes()
-        }
-        )
+            .then(() => {
+                loadNotes()
+            })
     }
 
+    //QQ: do I need to do the new notes list rendering in a synchronic way? (without calling the service?)
+    function onCopyNote(note) {
+
+        noteService.copyNote(note)
+            .then(() => {
+                loadNotes()
+            })
+    }
 
     if (!notes) {
         return <div className="loader">
@@ -77,11 +85,19 @@ export function NoteIndex() {
                 <NoteEdit loadNotes={loadNotes} />
                 <div className="pinned-note-container">
                     <p>Pinned</p>
-                <NoteList notes={getFilterdPinedNotes(true, notes)} onRemoveNote={removeNote}  togglePinning={togglePinning}/>
+                    <NoteList
+                        notes={getFilterdPinedNotes(true, notes)}
+                        onRemoveNote={removeNote}
+                        togglePinning={togglePinning}
+                        onCopyNote={onCopyNote} />
                 </div>
-                  <div className="pinned-note-container">
+                <div className="pinned-note-container">
                     <p>Others</p>
-                <NoteList notes={getFilterdPinedNotes(false, notes)} onRemoveNote={removeNote} togglePinning={togglePinning}/>
+                    <NoteList
+                        notes={getFilterdPinedNotes(false, notes)}
+                        onRemoveNote={removeNote}
+                        togglePinning={togglePinning}
+                        onCopyNote={onCopyNote} />
                 </div>
             </div>
         </section>

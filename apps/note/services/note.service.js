@@ -12,7 +12,8 @@ export const noteService = {
     save,
     getEmptyNote,
     getFilterFromSearchParms,
-    getDefaultFilter
+    getDefaultFilter,
+    copyNote
 }
 
 // For Debug (easy access from console):
@@ -21,26 +22,26 @@ export const noteService = {
 function query(filterBy = {}) {
 
     return storageService.query(NOTES_KEY)
-        .then(notes => { 
-            
+        .then(notes => {
+
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => (regExp.test(note.info.title) || regExp.test(note.info.txt) ))
+                notes = notes.filter(note => (regExp.test(note.info.title) || regExp.test(note.info.txt)))
             }
             if (filterBy.type) {
                 notes = notes.filter(note => note.type === filterBy.type)
             }
-            if(filterBy.pined){
+            if (filterBy.pined) {
                 notes = notes.filter(note => !note.isPinned)
             }
-            
-            return notes })
+
+            return notes
+        })
 }
 
 function get(noteId) {
     return storageService.get(NOTES_KEY, noteId)
         .then(note => {
-            // note = _setNextPrevCarId(note)
             return note
         })
 }
@@ -72,18 +73,24 @@ function getEmptyNote() {
     }
 }
 
-function getFilterFromSearchParms(searchParams){
+function getFilterFromSearchParms(searchParams) {
     const defaultFilter = getDefaultFilter()
-    const filterby ={}
+    const filterby = {}
     for (const field in defaultFilter) {
-        filterby[field] = searchParams.get(field) || ''   
+        filterby[field] = searchParams.get(field) || ''
     }
     return filterby
 }
 
-function getDefaultFilter(filterBy = {txt: '', type: ''}){
-    return {txt: filterBy.txt, type: filterBy.type}
-    
+function getDefaultFilter(filterBy = { txt: '', type: '' }) {
+    return { txt: filterBy.txt, type: filterBy.type }
+
+}
+
+function copyNote(note) {
+    const { id, ...copiedNote } = note
+    const newCopiedNote = { ...copiedNote, isPinned: false, createdAt: Date.now() }
+   return save(newCopiedNote)
 }
 
 
