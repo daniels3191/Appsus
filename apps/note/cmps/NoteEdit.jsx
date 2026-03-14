@@ -58,7 +58,7 @@ export function NoteEdit({ loadNotes }) {
                 value={note.info.title}
                 onChange={handleChange}
                 rows="1"
-                onClick={() => setIsShown(!isShown)} />
+                onClick={!isShown? () => setIsShown(!isShown) : ''} />
             {isShown &&
                 <textarea type="text"
                     placeholder="Take a note..."
