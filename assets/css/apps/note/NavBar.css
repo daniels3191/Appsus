@@ -1,16 +1,24 @@
+.nav-bar {}
 
+.nav-bar .buble-icon {
 
-.nav-bar{
-}
-
-.nav-bar  .buble-ican{
- 
-
+    display: flex;
     width: 46px;
     height: 46px;
-    
+
     border-radius: 50%;
     background-color: rgb(254, 239, 195);
-    /* margin-inline-start: 12px; */
+    margin-inline-start: 12px;
 
- }
+}
+
+.svg-bulb-icon {
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+}
+
+.notes-section {
+    width: 0;
+    margin-inline-start: 20px;
+}
