@@ -8,6 +8,7 @@ import { utilService } from '../../../services/util.service.js'
 export function NoteEdit({ loadNotes }) {
 
     const [note, setNote] = useState(noteService.getEmptyNote())
+    const [isShown, setIsShown] = useState(false)
     const params = useParams()
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export function NoteEdit({ loadNotes }) {
                 ...prev.info,
                 [name]: type === 'textarea' ? value : +value
             },
-             style: {
+            style: {
                 ...prev.style,
                 [name]: value
             }
@@ -38,41 +39,47 @@ export function NoteEdit({ loadNotes }) {
         noteService.save(note)
             .then(note => {
                 loadNotes()
-                clear()
+                onCloseEdit()
             })
             .catch(err => showErrorMsg(`Couldn't save ${note.id}`))
     }
 
-    function clear() {
+    function onCloseEdit() {
         setNote(noteService.getEmptyNote())
-
+        setIsShown(!isShown)
     }
 
     return <div className="note-edit-container" style={note.style}>
         <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote} >
             <textarea type="text"
-                placeholder="Title"
+                placeholder={isShown ? "Title" : "Take a note..."}
                 id="title"
                 name="title"
                 value={note.info.title}
                 onChange={handleChange}
-                rows="1" />
-
-            <textarea type="text"
-                placeholder="Take a note..."
-                id="txt"
-                name="txt"
-                value={note.info.txt}
-                onChange={handleChange}
-                rows="1" />
+                rows="1"
+                onClick={!isShown? () => setIsShown(!isShown) : ''} />
+            {isShown &&
+                <textarea type="text"
+                    placeholder="Take a note..."
+                    id="txt"
+                    name="txt"
+                    value={note.info.txt}
+                    onChange={handleChange}
+                    rows="1" />
+            }
         </form>
-        <div className="action-container">
-            <button type="submit" form="note-edit-form">Save</button>
-            <Link to={'/note/'}>
-                <button onClick={clear}>Clear</button>
-            </Link>
-            <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
-                className="backgroundcolor-input" onChange={handleChange} />
-        </div>
+
+        {isShown &&
+            <div className="action-container">
+                <button type="submit" form="note-edit-form">Save</button>
+                <Link to={'/note/'}>
+                    <button type="button" onClick={onCloseEdit}>Close</button>
+                </Link>
+                <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
+                    className="backgroundcolor-input" onChange={handleChange} />
+            </div>
+        }
+
     </div>
 }

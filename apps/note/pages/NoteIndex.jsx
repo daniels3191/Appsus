@@ -11,6 +11,7 @@ import { noteService } from '../services/note.service.js'
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
+    // const [note, setNote] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] =
         useState(noteService.getFilterFromSearchParms(searchParams))
@@ -21,7 +22,6 @@ export function NoteIndex() {
     }, [filterBy])
 
     function loadNotes() {
-
         return noteService.query(filterBy)
             .then(notes => {
                 setNotes(notes)
@@ -36,10 +36,37 @@ export function NoteIndex() {
 
             }).catch(() => {
                 console.log(`Cant remove the note ${noteId}`);
-
             })
     }
 
+    function getFilterdPinedNotes(isPinned, notes) {
+        let filteredPinedNotes = {}
+        if (isPinned) {
+            filteredPinedNotes = notes.filter(note => note.isPinned)
+        } else {
+            filteredPinedNotes = notes.filter(note => !note.isPinned)
+        }
+        return filteredPinedNotes
+    }
+
+    //QQ: do I need to do the new notes list rendering in a synchronic way? (without calling the service?)
+    function togglePinning(note) {
+
+        note.isPinned = !note.isPinned
+        noteService.save(note)
+            .then(() => {
+                loadNotes()
+            })
+    }
+
+    //QQ: do I need to do the new notes list rendering in a synchronic way? (without calling the service?)
+    function onCopyNote(note) {
+
+        noteService.copyNote(note)
+            .then(() => {
+                loadNotes()
+            })
+    }
 
     if (!notes) {
         return <div className="loader">
@@ -56,7 +83,22 @@ export function NoteIndex() {
             <NavBar />
             <div className="note-main">
                 <NoteEdit loadNotes={loadNotes} />
-                <NoteList notes={notes} onRemoveNote={removeNote} />
+                <div className="pinned-note-container">
+                    <p>Pinned</p>
+                    <NoteList
+                        notes={getFilterdPinedNotes(true, notes)}
+                        onRemoveNote={removeNote}
+                        togglePinning={togglePinning}
+                        onCopyNote={onCopyNote} />
+                </div>
+                <div className="pinned-note-container">
+                    <p>Others</p>
+                    <NoteList
+                        notes={getFilterdPinedNotes(false, notes)}
+                        onRemoveNote={removeNote}
+                        togglePinning={togglePinning}
+                        onCopyNote={onCopyNote} />
+                </div>
             </div>
         </section>
     )

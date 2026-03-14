@@ -2,7 +2,8 @@ const { Link } = ReactRouterDOM
 
 import { NotePreview } from "./NotePreview.jsx";
 
-export function NoteList({notes,onRemoveNote}) {
+export function NoteList({notes, onRemoveNote, togglePinning, onCopyNote}) {
+
 
     
 
@@ -15,6 +16,8 @@ export function NoteList({notes,onRemoveNote}) {
                 <Link to={`/note/${note.id}`} >
                 <button className='btn-note-edit'>Edit</button>
                 </Link>
+                <button onClick={() => togglePinning(note)}>Tpinning</button>
+                <button onClick={() => onCopyNote(note)}>Copy</button>
                 </div>
 
             </li> )}
