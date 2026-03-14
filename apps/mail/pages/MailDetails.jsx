@@ -3,6 +3,45 @@
 // • Allow deleting a mail (using the service)
 // • Allow navigating back to the list
 // • Allow navigating to next/prev emails
-export function MailDetails() {
-  return <section className="mail-details">Mail Details</section>
+
+const { useState, useEffect } = React
+const { Link, useParams } = ReactRouterDOM
+
+import { mailService } from "../services/mail.service.js"
+
+export function CarDetails() {
+  const [mail, setMail] = useState(null)
+  const params = useParams()
+
+  useEffect(() => {
+    mailService.get(params.id).then(setMail)
+  }, [params.id])
+
+  if (mail)
+    return (
+      <div className="loader">
+        <span>Loading...</span>
+      </div>
+    )
+  console.log(mail)
+
+  return (
+    <section className="mail-details">
+      <h2>{mail.subject}</h2>
+      <p>{mail.from}</p>
+      <p>{mail.body}</p>
+
+      {/* <nav>
+        <Link to={`/mail/${mail.prevMailId}`}>
+          <button>Prev</button>
+        </Link>
+        <Link to={`/mail/${mail.nextMailId}`}>
+          <button>Next</button>
+        </Link>
+        <Link to="/mail">
+          <button>Back</button>
+        </Link>
+      </nav> */}
+    </section>
+  )
 }
