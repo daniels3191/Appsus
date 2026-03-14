@@ -1,12 +1,17 @@
 // • Renders a list of <MailPreview> pass down a mail prop
 import { MailPreview } from "./MailPreview.jsx"
-export function MailList({ mails, onStar }) {
+export function MailList({ mails, onStar, onRead, onRemoveMail }) {
   return (
     <section className="mail-list">
       <ul>
         {mails.map((mail) => (
           <li className="mail-item clean-list" key={mail.id}>
-            <MailPreview mail={mail} onStar={onStar} />
+            <MailPreview
+              mail={mail}
+              onStar={onStar}
+              onRead={onRead}
+              onRemoveMail={onRemoveMail}
+            />
           </li>
         ))}
       </ul>

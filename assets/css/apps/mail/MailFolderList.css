@@ -13,6 +13,6 @@
   overflow: hidden;
   transition: all 0.3 ease;
   width: 100%;
-  max-width: 256px;
+  max-width: 200px;
   padding-top: 8px;
 }

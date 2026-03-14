@@ -6,6 +6,11 @@
       "menu content";
     height: 100vh;
   }
+  .mail-list {
+    ul {
+      padding-inline-start: 0;
+    }
+  }
 
   .mail-menu {
     width: 140px;
@@ -39,5 +44,10 @@
   }
   .container.menu-closed .mail-compose-btn {
     background-color: white;
+  }
+
+  .mail-compose-modal {
+    left: 0;
+    max-width: 100%;
   }
 }

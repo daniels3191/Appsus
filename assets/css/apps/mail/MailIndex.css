@@ -7,7 +7,7 @@
   color: rgb(32, 33, 36);
 
   display: grid;
-  grid-template-columns: 256px minmax(600px, 1fr);
+  grid-template-columns: 200px minmax(600px, 1fr);
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "header header"
