@@ -43,7 +43,7 @@ export function MailIndex({ setActiveApp }) {
   }
 
   function onRead(mail) {
-  const updatedMail = { ...mail, isRead: true }
+    const updatedMail = { ...mail, isRead: true }
     mailService.save(updatedMail).then(loadMails)
   }
 
@@ -109,21 +109,24 @@ export function MailIndex({ setActiveApp }) {
         <MailFolderList />
       </div>
       <div className="mail-content">
-        <MailFilter
-          filterBy={filterBy}
-          onSetFilterBy={setFilterBy}
-          onClearFilter={onClearFilter}
-        />
         {params.id ? (
-          <MailDetails mailId={params.id} />
+          <MailDetails onRemoveMail={onRemoveMail} mailId={params.id} />
         ) : (
-          <MailList
-            mails={mails}
-            onToggleRead={onToggleRead}
-            onStar={onStar}
-            onRemoveMail={onRemoveMail}
-            onRead={onRead}
-          />
+          <React.Fragment>
+            <MailFilter
+              filterBy={filterBy}
+              onSetFilterBy={setFilterBy}
+              onClearFilter={onClearFilter}
+            />
+
+            <MailList
+              mails={mails}
+              onToggleRead={onToggleRead}
+              onStar={onStar}
+              onRemoveMail={onRemoveMail}
+              onRead={onRead}
+            />
+          </React.Fragment>
         )}
       </div>
     </section>
