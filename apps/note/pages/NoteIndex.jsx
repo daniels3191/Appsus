@@ -14,6 +14,7 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     // const [note, setNote] = useState(null)
+    const [IsFullNoteEditor, setIsFullNoteEditor] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] =
         useState(noteService.getFilterFromSearchParms(searchParams))
@@ -82,14 +83,19 @@ export function NoteIndex() {
             />
             <NavBar />
             <div className="note-main">
-                <NoteEdit loadNotes={loadNotes} />
-                <div className="pinned notes-container">
+                <NoteEdit
+                    loadNotes={loadNotes}
+                    IsFullNoteEditor={IsFullNoteEditor}
+                    setIsFullNoteEditor={setIsFullNoteEditor} />
+                <div className="pinned-note-container">
                     <p>Pinned</p>
                     <NoteList
                         notes={getFilterdPinedNotes(true, notes)}
                         onRemoveNote={removeNote}
                         togglePinning={togglePinning}
-                        onCopyNote={onCopyNote} />
+                        onCopyNote={onCopyNote}
+                        IsFullNoteEditor={IsFullNoteEditor}
+                        setIsFullNoteEditor={setIsFullNoteEditor} />
                 </div>
                 <div className="unpinned notes-container">
                     <p>Others</p>
@@ -97,7 +103,9 @@ export function NoteIndex() {
                         notes={getFilterdPinedNotes(false, notes)}
                         onRemoveNote={removeNote}
                         togglePinning={togglePinning}
-                        onCopyNote={onCopyNote} />
+                        onCopyNote={onCopyNote}
+                        IsFullNoteEditor={IsFullNoteEditor}
+                        setIsFullNoteEditor={setIsFullNoteEditor} />
                 </div>
             </div>
         </section>

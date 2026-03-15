@@ -5,10 +5,10 @@ const { Link } = ReactRouterDOM
 import { noteService } from '../services/note.service.js'
 import { utilService } from '../../../services/util.service.js'
 
-export function NoteEdit({ loadNotes }) {
+export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
 
     const [note, setNote] = useState(noteService.getEmptyNote())
-    const [isShown, setIsShown] = useState(false)
+
     const params = useParams()
 
     useEffect(() => {
@@ -46,20 +46,22 @@ export function NoteEdit({ loadNotes }) {
 
     function onCloseEdit() {
         setNote(noteService.getEmptyNote())
-        setIsShown(!isShown)
+        setIsFullNoteEditor(!IsFullNoteEditor)
     }
+    console.log(IsFullNoteEditor);
+    
 
     return <div className="note-edit-container" style={note.style}>
         <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote} >
             <textarea type="text"
-                placeholder={isShown ? "Title" : "Take a note..."}
+                placeholder={IsFullNoteEditor ? "Title" : "Take a note..."}
                 id="title"
                 name="title"
                 value={note.info.title}
                 onChange={handleChange}
                 rows="1"
-                onClick={!isShown? () => setIsShown(!isShown) : ''} />
-            {isShown &&
+                onClick={!IsFullNoteEditor ? () => setIsFullNoteEditor(!IsFullNoteEditor) : () => ''} />
+            {IsFullNoteEditor &&
                 <textarea type="text"
                     placeholder="Take a note..."
                     id="txt"
@@ -70,7 +72,7 @@ export function NoteEdit({ loadNotes }) {
             }
         </form>
 
-        {isShown &&
+        {IsFullNoteEditor &&
             <div className="action-container">
                 <button type="submit" form="note-edit-form">Save</button>
                 <Link to={'/note/'}>
