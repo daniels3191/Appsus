@@ -11,6 +11,8 @@ const { useState } = React
 
 export function RootCmp() {
   const [activeApp, setActiveApp] = useState(null)
+  console.log(activeApp);
+  
   return (
     <Router>
       <section className="root-cmp">

@@ -25,7 +25,7 @@ export function NoteIndex({setActiveApp}) {
     }, [filterBy])
 
       useEffect(() => {
-  setActiveApp('mail')
+  setActiveApp('note')
   return () => setActiveApp(null)
 }, [])
 
