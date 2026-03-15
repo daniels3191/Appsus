@@ -2,7 +2,7 @@
 // • Renders the list and the filter components (both top filter with search,
 // and side filter for different folders)
 const { useState, useEffect } = React
-const { Link, useSearchParams } = ReactRouterDOM
+const { Link, useSearchParams, useParams } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 import { MailList } from "../cmps/MailList.jsx"
@@ -10,11 +10,12 @@ import { MailFolderList } from "../cmps/MailFolderList.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailHeader } from "../cmps/MailHeader.jsx"
 import { MailCompose } from "../cmps/MailCompose.jsx"
+import { MailDetails } from "./MailDetails.jsx"
 
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
 import { showErrorMsg } from "../../../services/event-bus.service.js"
 
-export function MailIndex({setActiveApp}) {
+export function MailIndex({ setActiveApp }) {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
   const [mails, setMails] = useState(null)
   const [searchParams, setSearchParams] = useSearchParams()
@@ -36,8 +37,13 @@ export function MailIndex({setActiveApp}) {
     mailService.save(updatedMail).then(loadMails)
   }
 
-  function onRead(mail) {
+  function onToggleRead(mail) {
     const updatedMail = { ...mail, isRead: !mail.isRead }
+    mailService.save(updatedMail).then(loadMails)
+  }
+
+  function onRead(mail) {
+  const updatedMail = { ...mail, isRead: true }
     mailService.save(updatedMail).then(loadMails)
   }
 
@@ -78,9 +84,11 @@ export function MailIndex({setActiveApp}) {
   }, [filterBy])
 
   useEffect(() => {
-  setActiveApp('mail')
-  return () => setActiveApp(null)
-}, [])
+    setActiveApp("mail")
+    return () => setActiveApp(null)
+  }, [])
+
+  const params = useParams()
 
   if (!mails) {
     return (
@@ -106,12 +114,17 @@ export function MailIndex({setActiveApp}) {
           onSetFilterBy={setFilterBy}
           onClearFilter={onClearFilter}
         />
-        <MailList
-          mails={mails}
-          onStar={onStar}
-          onRead={onRead}
-          onRemoveMail={onRemoveMail}
-        />
+        {params.id ? (
+          <MailDetails mailId={params.id} />
+        ) : (
+          <MailList
+            mails={mails}
+            onToggleRead={onToggleRead}
+            onStar={onStar}
+            onRemoveMail={onRemoveMail}
+            onRead={onRead}
+          />
+        )}
       </div>
     </section>
   )

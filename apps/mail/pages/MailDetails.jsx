@@ -23,7 +23,7 @@ export function MailDetails() {
         <span>Loading...</span>
       </div>
     )
-  console.log(mail)
+  // console.log(mail)
 
   return (
     <section className="mail-details">
