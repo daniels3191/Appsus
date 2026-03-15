@@ -87,7 +87,7 @@ export function NoteIndex() {
                     loadNotes={loadNotes}
                     IsFullNoteEditor={IsFullNoteEditor}
                     setIsFullNoteEditor={setIsFullNoteEditor} />
-                <div className="pinned-note-container">
+                <div className="pinned notes-container">
                     <p>Pinned</p>
                     <NoteList
                         notes={getFilterdPinedNotes(true, notes)}
