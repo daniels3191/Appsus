@@ -48,7 +48,6 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
         setNote(noteService.getEmptyNote())
         setIsFullNoteEditor(!IsFullNoteEditor)
     }
-    console.log(IsFullNoteEditor);
     
 
     return <div className="note-edit-container" style={note.style}>

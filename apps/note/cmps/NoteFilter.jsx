@@ -39,7 +39,7 @@ export function NoteFilter({ filterBy, setFilterBy }) {
             <XIcon />
         </button>
 
-        {/* <label htmlFor="type">Note Type:</label>
+        <label htmlFor="type">Note Type:</label>
         <select id="type" name="type" type='text'
             value={filterByToEdit.type}
             onChange={ev => handleChange(ev)}>
@@ -48,7 +48,7 @@ export function NoteFilter({ filterBy, setFilterBy }) {
             <option value="NoteImg">Image</option>
             <option value="NoteVideos">Video</option>
             <option value="NoteTodos">Todos</option>
-        </select> */}
+        </select>
     </div>
 
 

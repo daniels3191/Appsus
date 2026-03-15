@@ -90,7 +90,7 @@ function getDefaultFilter(filterBy = { txt: '', type: '' }) {
 function copyNote(note) {
     const { id, ...copiedNote } = note
     const newCopiedNote = { ...copiedNote, isPinned: false, createdAt: Date.now() }
-   return save(newCopiedNote)
+    return save(newCopiedNote)
 }
 
 
@@ -115,7 +115,7 @@ function _createNotes() {
             {
                 id: 'n102',
                 createdAt: 1112223,
-                type: 'NoteImg',
+                type: 'NoteTxt',//'NoteImg',
                 isPinned: false,
                 style: {
                     backgroundColor: '#0d0'
@@ -130,7 +130,7 @@ function _createNotes() {
             {
                 id: 'n103',
                 createdAt: 1112224,
-                type: 'NoteTodos',
+                type: 'NoteTxt',//'NoteTodos',
                 isPinned: false,
                 style: {
                     backgroundColor: '#d00'
@@ -162,7 +162,40 @@ function _createNotes() {
                     // url: 'http://some-img/me',
                     // title: 'Bobi and Me'
                 }
+            },
+            {
+                id: 'n1055',
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#0d0'
+                },
+                info: {
+                    url: 'https://cdn.pixabay.com/photo/2023/01/23/13/37/flowers-7738726_1280.jpg',
+                    title: 'Bobi and Me'
+                }
+            },
+            {
+                id: 'n10322',
+                createdAt: 1112224,
+                type: 'NoteTodos',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#d00'
+                },
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [
+                        {
+                            txt: 'Driving license'
+                            , isDone: true
+                        },
+                        { txt: 'Coding power', isDone: false }
+                    ]
+                }
             }
+
         ]
     }
     utilService.saveToStorage(NOTES_KEY, notes)

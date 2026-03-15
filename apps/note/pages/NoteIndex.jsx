@@ -9,11 +9,7 @@ import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 
 export function NoteIndex() {
-    console.log('hi');
-    
-
     const [notes, setNotes] = useState(null)
-    // const [note, setNote] = useState(null)
     const [IsFullNoteEditor, setIsFullNoteEditor] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] =
@@ -52,7 +48,6 @@ export function NoteIndex() {
         return filteredPinedNotes
     }
 
-    //QQ: do I need to do the new notes list rendering in a synchronic way? (without calling the service?)
     function togglePinning(note) {
         note.isPinned = !note.isPinned
         noteService.save(note)
@@ -61,12 +56,17 @@ export function NoteIndex() {
             })
     }
 
-    //QQ: do I need to do the new notes list rendering in a synchronic way? (without calling the service?)
     function onCopyNote(note) {
         noteService.copyNote(note)
             .then(() => {
                 loadNotes()
             })
+    }
+
+    function onUpdateNote(updatedNote) {
+
+        noteService.save(updatedNote)
+            .then(() => loadNotes())
     }
 
     if (!notes) {
@@ -105,7 +105,8 @@ export function NoteIndex() {
                         togglePinning={togglePinning}
                         onCopyNote={onCopyNote}
                         IsFullNoteEditor={IsFullNoteEditor}
-                        setIsFullNoteEditor={setIsFullNoteEditor} />
+                        setIsFullNoteEditor={setIsFullNoteEditor}
+                        onUpdateNote={onUpdateNote} />
                 </div>
             </div>
         </section>
