@@ -43,7 +43,7 @@ function query(filterBy = {}) {
     }
     if (filterBy.status === "sent") {
       mails = mails.filter(
-        (mail) => mail.to === loggedinUser.email && !mail.removedAt,
+        (mail) => mail.from === loggedinUser.email && !mail.removedAt,
       )
     }
     if (filterBy.status === "trash") {
@@ -79,8 +79,8 @@ function save(mail) {
 function getEmptyMail(
   subject = "",
   body = "",
-  from = "",
-  to = "user@appsus.com",
+  from = loggedinUser.email,
+  to = "",
 ) {
   return {
     id: null,

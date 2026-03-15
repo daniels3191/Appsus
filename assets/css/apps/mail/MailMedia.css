@@ -12,6 +12,10 @@
     }
   }
 
+  .mail-title{
+    padding-right: 16px;
+  }
+
   .mail-menu {
     width: 140px;
     overflow: hidden;

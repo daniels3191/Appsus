@@ -1,6 +1,12 @@
 // • Renders a list of <MailPreview> pass down a mail prop
 import { MailPreview } from "./MailPreview.jsx"
-export function MailList({ mails, onStar, onRead, onRemoveMail }) {
+export function MailList({
+  mails,
+  onStar,
+  onToggleRead,
+  onRemoveMail,
+  onRead,
+}) {
   return (
     <section className="mail-list">
       <ul>
@@ -9,8 +15,9 @@ export function MailList({ mails, onStar, onRead, onRemoveMail }) {
             <MailPreview
               mail={mail}
               onStar={onStar}
-              onRead={onRead}
+              onToggleRead={onToggleRead}
               onRemoveMail={onRemoveMail}
+              onRead={onRead}
             />
           </li>
         ))}

@@ -17,8 +17,8 @@ export function MailHeader({ filterBy, onSetFilterBy ,onToggleMenu }) {
 
   return (
     <header className="mail-header">
-      <button className="action" onClick={onToggleMenu}>
-        <span className="mail-menu-icon material-symbols-outlined">menu</span>
+      <button className="action mail-menu-icon" onClick={onToggleMenu}>
+        <span className="material-symbols-outlined">menu</span>
       </button>
       <Link to="/mail">
         <div className="logo">

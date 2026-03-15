@@ -13,7 +13,8 @@
     "header header"
     "menu content";
   transition: transform 0.2s ease;
-
+  height: 100vh;
+  background-color: #f8fafd;
   nav a.active {
     color: black;
     font-weight: bold;
