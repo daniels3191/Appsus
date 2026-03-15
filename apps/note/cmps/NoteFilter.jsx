@@ -21,10 +21,7 @@ export function NoteFilter({ filterBy, setFilterBy }) {
     }
     function onSearch(){
         console.log('search');
-        
     }
-
-
 
     return <div className="note-filter">
 
