@@ -11,8 +11,8 @@
     border-radius: 8px;
     overflow: hidden;
 
-    margin-block-start: 32px;
-    margin-block-end: 16px;
+    margin-block-start: 2em;
+    margin-block-end: 3em;
 
     textarea {
         background-color: inherit;
