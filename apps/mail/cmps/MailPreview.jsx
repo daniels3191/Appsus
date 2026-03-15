@@ -2,7 +2,7 @@
 // • Renders the subject (with text size limit)
 // • Gives visual indication for read/unread
 // • Support hover state
-
+const { Link } = ReactRouterDOM
 import { utilService } from "../../../services/util.service.js"
 
 export function MailPreview({ mail, onStar, onRead, onRemoveMail }) {

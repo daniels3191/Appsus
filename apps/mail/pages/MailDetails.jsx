@@ -9,7 +9,7 @@ const { Link, useParams } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 
-export function CarDetails() {
+export function MailDetails() {
   const [mail, setMail] = useState(null)
   const params = useParams()
 
@@ -17,7 +17,7 @@ export function CarDetails() {
     mailService.get(params.id).then(setMail)
   }, [params.id])
 
-  if (mail)
+  if (!mail)
     return (
       <div className="loader">
         <span>Loading...</span>
