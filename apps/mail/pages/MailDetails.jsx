@@ -27,21 +27,21 @@ export function MailDetails() {
 
   return (
     <section className="mail-details">
-      <h2>{mail.subject}</h2>
-      <p>{mail.from}</p>
-      <p>{mail.body}</p>
+      <h2 className="details-title">{mail.subject}</h2>
+      <p className="details-from">{mail.from}</p>
+      <p className="details-body">{mail.body}</p>
 
-      {/* <nav>
+      <nav>
         <Link to={`/mail/${mail.prevMailId}`}>
           <button>Prev</button>
         </Link>
         <Link to={`/mail/${mail.nextMailId}`}>
           <button>Next</button>
         </Link>
-        <Link to="/mail">
+        {/* <Link to="/mail">
           <button>Back</button>
-        </Link>
-      </nav> */}
+        </Link> */}
+      </nav>
     </section>
   )
 }
