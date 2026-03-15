@@ -8,7 +8,7 @@ import { NoteHeader } from '../cmps/NoteHeader.jsx'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { noteService } from '../services/note.service.js'
 
-export function NoteIndex() {
+export function NoteIndex({setActiveApp}) {
     console.log('hi');
     
 
@@ -23,6 +23,11 @@ export function NoteIndex() {
         loadNotes()
         setSearchParams(utilService.trimObj(filterBy))
     }, [filterBy])
+
+      useEffect(() => {
+  setActiveApp('mail')
+  return () => setActiveApp(null)
+}, [])
 
     function loadNotes() {
         return noteService.query(filterBy)

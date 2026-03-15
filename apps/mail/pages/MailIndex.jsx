@@ -14,7 +14,7 @@ import { MailCompose } from "../cmps/MailCompose.jsx"
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
 import { showErrorMsg } from "../../../services/event-bus.service.js"
 
-export function MailIndex() {
+export function MailIndex({setActiveApp}) {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
   const [mails, setMails] = useState(null)
   const [searchParams, setSearchParams] = useSearchParams()
@@ -40,11 +40,6 @@ export function MailIndex() {
     const updatedMail = { ...mail, isRead: !mail.isRead }
     mailService.save(updatedMail).then(loadMails)
   }
-
-  // function onTrash(mail) {
-  //   const updatedMail = { ...mail, removedAt: new Date() }
-  //   mailService.save(updatedMail).then(loadMails)
-  // }
 
   function onRemoveMail(mail, mailId) {
     const mailToRemove = mails.find((mail) => mail.id === mailId)
@@ -81,6 +76,11 @@ export function MailIndex() {
     loadMails()
     setSearchParams(utilService.trimObj(filterBy))
   }, [filterBy])
+
+  useEffect(() => {
+  setActiveApp('mail')
+  return () => setActiveApp(null)
+}, [])
 
   if (!mails) {
     return (
