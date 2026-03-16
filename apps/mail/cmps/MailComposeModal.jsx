@@ -6,6 +6,19 @@ import { mailService } from "../services/mail.service.js"
 export function MailComposeModal({ toggleIsOpen, onMailSent }) {
   const [mail, setMail] = useState(mailService.getEmptyMail())
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMail((currMail) => {
+        mailService.save(currMail).then((savedMail) => {
+          setMail(savedMail)
+          onMailSent() // updating mails
+        })
+        return currMail
+      })
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
   function handleChange({ target }) {
     const { name, value } = target
     setMail((prev) => ({ ...prev, [name]: value }))
@@ -13,7 +26,8 @@ export function MailComposeModal({ toggleIsOpen, onMailSent }) {
 
   function onSendMail(ev) {
     ev.preventDefault()
-    mailService.save(mail).then(() => {
+    const mailToSend = { ...mail, isDraft: false, }
+    mailService.save(mailToSend).then(() => {
       toggleIsOpen()
       onMailSent()
     })

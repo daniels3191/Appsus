@@ -19,6 +19,7 @@ export const mailService = {
   getEmptyMail,
   getDefaultFilter,
   getFilterFromSearchParams,
+  getUnreadCount,
 }
 
 function query(filterBy = {}) {
@@ -30,7 +31,7 @@ function query(filterBy = {}) {
       )
     }
 
-    if (filterBy.isRead) {
+    if (filterBy.isRead === true || filterBy.isRead === false) {
       mails = mails.filter((mail) => mail.isRead === filterBy.isRead)
     }
     if (filterBy.isStarred) {
@@ -50,7 +51,7 @@ function query(filterBy = {}) {
       mails = mails.filter((mail) => mail.removedAt !== null)
     }
     if (filterBy.status === "draft") {
-      mails = mails.filter((mail) => !mail.sentAt)
+      mails = mails.filter((mail) => mail.isDraft)
     }
     // Labels not implemented yet,Need to figure it out.
     return mails
@@ -88,6 +89,7 @@ function getEmptyMail(
     body,
     isRead: false,
     isStarred: false,
+    isDraft: true,
     sentAt: new Date(),
     labels: [],
     removedAt: null,
@@ -141,7 +143,7 @@ function getFilterFromSearchParams(searchParams) {
 function getDefaultFilter(
   filterBy = {
     txt: "",
-    isRead: false,
+    isRead: null,
     isStarred: false,
     labels: [],
   },
@@ -151,6 +153,11 @@ function getDefaultFilter(
     status: filterBy.status,
     isRead: filterBy.isRead,
     isStarred: filterBy.isStarred,
+    isDraft: filterBy.isDraft,
     labels: filterBy.labels,
   }
+}
+
+function getUnreadCount(status) {
+  return query({ isRead: false, status }).then((mails) => mails.length)
 }

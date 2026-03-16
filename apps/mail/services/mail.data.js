@@ -19,7 +19,7 @@ export const mailData = [
     isRead: false,
     isStarred: true,
     sentAt: 1551133930594,
-    removedAt: 1551133930493,
+    removedAt: null,
     from: "momo@momo.com",
     to: "user@appsus.com",
   },
