@@ -2,7 +2,6 @@ const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
 
 import { utilService } from '../../../services/util.service.js'
-import { noteService } from '../services/note.service.js'
 
 export function AddNoteTodos({
     note,

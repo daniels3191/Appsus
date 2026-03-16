@@ -17,7 +17,14 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
     useEffect(() => {
         if (params.id) {
             noteService.get(params.id)
-                .then(note => setNote(note))
+                .then(note => {
+                    setNote(note)
+                    console.log(note.type);
+                    if (note.type === 'NoteTodos') setNoteType('AddNoteTodos')
+                    else if (note.type === 'NoteTxt') setNoteType('AddNoteTxt')
+                    else setNoteType('AddNoteImg')
+                })
+
         }
     }, [params.id])
 
@@ -42,8 +49,6 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
             }))
         }
     }
-
-
 
     function onSaveNote(ev) {
         ev.preventDefault()
@@ -88,8 +93,8 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
         }))
     }
     function onSetNoteType(noteType) {
-        
-        
+
+
         setNoteType(noteType)
         if (noteType === 'AddNoteTodos') {
             console.log(noteType);
@@ -145,7 +150,6 @@ function DynamicNoteAddingByType(props) {
         TakeANote: <TakeANote {...props} />,
         AddNoteImg: <AddNoteImg {...props} />,
         AddNoteTxt: <AddNoteTxt {...props} />,
-        // AddNoteTodos: <AddNoteTodos {...props} />,
         AddNoteTodos: <AddNoteTodos {...props} />
     }
 

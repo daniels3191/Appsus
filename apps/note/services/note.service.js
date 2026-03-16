@@ -110,7 +110,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
                     title: 'Go Fullstack',
@@ -138,7 +138,8 @@ function _createNotes() {
                 type: 'NoteTxt',//'NoteTodos',
                 isPinned: false,
                 style: {
-                    backgroundColor: '#d00'
+                    
+                    backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
                     title: 'Go Stuff',
@@ -159,7 +160,8 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: false,
                 style: {
-                    backgroundColor: '#0d0'
+                    
+                    backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
                     title: 'Dodido',
@@ -174,7 +176,8 @@ function _createNotes() {
                 type: 'NoteImg',
                 isPinned: false,
                 style: {
-                    backgroundColor: '#0d0'
+                    
+                    backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
                     url: 'https://cdn.pixabay.com/photo/2023/01/23/13/37/flowers-7738726_1280.jpg',
@@ -187,7 +190,8 @@ function _createNotes() {
                 type: 'NoteTodos',
                 isPinned: false,
                 style: {
-                    backgroundColor: '#d00'
+                    
+                    backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
                     title: 'Get my stuff together',

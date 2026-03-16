@@ -1,0 +1,15 @@
+.check-list-container{
+
+    li{
+        padding: 0;
+    }
+    input{
+        background: inherit;
+        padding: 11px 0;
+        border: 0px;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}

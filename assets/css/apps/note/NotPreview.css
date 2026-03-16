@@ -1,11 +1,11 @@
 
 
-.note-priview :first-child {
+.note-priview p:first-child {
     padding: 16px 16px 0px 16px;
 
 }
 
-.note-priview :last-child {
+.note-priview p:last-child {
     padding: 12px 16px;
 
 }

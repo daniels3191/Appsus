@@ -43,7 +43,8 @@
         font-size: 20px;
     }
 
-    .note-edit-form :first-child {
+    .note-edit-form textarea:first-child {
+        
         padding: 16px 16px 0px 16px;
         border: none;
     }
