@@ -19,7 +19,7 @@
 }
 
 .notes-container{
-   margin-block-end: 4em;
+   margin: auto 4em 4em 4em ;
 
    p{
       text-transform: uppercase;
