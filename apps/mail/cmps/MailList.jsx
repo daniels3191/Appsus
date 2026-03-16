@@ -6,6 +6,7 @@ export function MailList({
   onToggleRead,
   onRemoveMail,
   onRead,
+  stopPropagation
 }) {
   return (
     <section className="mail-list">
@@ -18,6 +19,7 @@ export function MailList({
               onToggleRead={onToggleRead}
               onRemoveMail={onRemoveMail}
               onRead={onRead}
+              stopPropagation={stopPropagation}
             />
           </li>
         ))}

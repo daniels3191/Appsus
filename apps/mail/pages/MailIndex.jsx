@@ -19,7 +19,8 @@ export function MailIndex({ setActiveApp }) {
   const [isMenuOpen, setIsMenuOpen] = useState(true)
   const [mails, setMails] = useState(null)
   const [searchParams, setSearchParams] = useSearchParams()
-
+  const [unreadCount, setUnreadCount] = useState(null)
+  const params = useParams()
   const [filterBy, setFilterBy] = useState(
     mailService.getFilterFromSearchParams(searchParams),
   )
@@ -74,6 +75,12 @@ export function MailIndex({ setActiveApp }) {
   function onToggleMenu() {
     setIsMenuOpen((prev) => !prev)
   }
+
+  function stopPropagation(ev) {
+    ev.preventDefault()
+    ev.stopPropagation()
+  }
+
   useEffect(() => {
     setFilterBy(mailService.getFilterFromSearchParams(searchParams))
   }, [searchParams])
@@ -84,11 +91,8 @@ export function MailIndex({ setActiveApp }) {
   }, [filterBy])
 
   useEffect(() => {
-    setActiveApp("mail")
-    return () => setActiveApp(null)
-  }, [])
-
-  const params = useParams()
+    mailService.getUnreadCount(filterBy.status).then(setUnreadCount)
+  }, [mails])
 
   if (!mails) {
     return (
@@ -105,8 +109,8 @@ export function MailIndex({ setActiveApp }) {
         onToggleMenu={onToggleMenu}
       />
       <div className="mail-menu">
-        <MailCompose onMailSent={loadMails} />
-        <MailFolderList />
+        <MailCompose onMailSent={loadMails}  />
+        <MailFolderList unreadCount={unreadCount} />
       </div>
       <div className="mail-content">
         {params.id ? (
@@ -125,6 +129,7 @@ export function MailIndex({ setActiveApp }) {
               onStar={onStar}
               onRemoveMail={onRemoveMail}
               onRead={onRead}
+              stopPropagation={stopPropagation}
             />
           </React.Fragment>
         )}

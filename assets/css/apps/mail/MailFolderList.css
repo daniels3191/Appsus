@@ -17,3 +17,10 @@
   padding-top: 8px;
   /* background-color: #f8fafd; */
 }
+
+span.unread-count {
+  margin-left: auto;
+  font-weight: 700;
+  color: #001d35;
+  font-size: 0.75rem;
+}

@@ -63,13 +63,13 @@ export function MailDetails({ onRemoveMail }) {
           <nav>
             <Link to={`/mail/${mail.prevMailId}`}>
               <button>
-                <span class="material-symbols-outlined">arrow_top_left</span>
+                <span className="material-symbols-outlined">arrow_top_left</span>
                 Prev
               </button>
             </Link>
             <Link to={`/mail/${mail.nextMailId}`}>
               <button>
-                <span class="material-symbols-outlined">arrow_top_right</span>
+                <span className="material-symbols-outlined">arrow_top_right</span>
                 Next
               </button>
             </Link>

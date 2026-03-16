@@ -11,6 +11,7 @@ export function MailPreview({
   onToggleRead,
   onRemoveMail,
   onRead,
+  stopPropagation,
 }) {
   return (
     <Link
@@ -20,7 +21,12 @@ export function MailPreview({
       }}
     >
       <section className={`mail-preview ${!mail.isRead ? "" : "unread"}`}>
-        <button className="action mail-star" onClick={() => onStar(mail)}>
+        <button
+          className="action mail-star"
+          onClick={(ev) => {
+            ;(stopPropagation(ev), onStar(mail))
+          }}
+        >
           {mail.isStarred ? (
             <i
               className="fa-solid fa-star"
@@ -30,7 +36,6 @@ export function MailPreview({
             <i className="fa-regular fa-star"></i>
           )}
         </button>
-
         <span className={`mail-title ${!mail.isRead ? "font-bold" : ""}`}>
           {mail.subject}
         </span>
@@ -43,7 +48,9 @@ export function MailPreview({
           <button
             title="Delete"
             className="action"
-            onClick={() => onRemoveMail(mail, mail.id)}
+            onClick={(ev) => {
+              ;(stopPropagation(ev), onRemoveMail(mail, mail.id))
+            }}
           >
             <span title="Delete" className="material-symbols-outlined">
               delete
@@ -54,7 +61,9 @@ export function MailPreview({
             <button
               title="Mark as unread"
               className="action"
-              onClick={() => onToggleRead(mail)}
+              onClick={(ev) => {
+                ;(stopPropagation(ev), onToggleRead(mail))
+              }}
             >
               <span className="material-symbols-outlined">
                 mark_email_unread
@@ -64,7 +73,9 @@ export function MailPreview({
             <button
               title="Mark as read"
               className="action"
-              onClick={() => onToggleRead(mail)}
+              onClick={(ev) => {
+                ;(stopPropagation(ev), onToggleRead(mail))
+              }}
             >
               <span className="material-symbols-outlined">mark_email_read</span>
             </button>
