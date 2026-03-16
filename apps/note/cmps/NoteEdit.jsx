@@ -172,16 +172,26 @@ function TakeANote({ note, handleChange, onSaveNote, handleChangeUploadImg, onSe
                     rows="1"
                     onClick={() => onSetNoteType('AddNoteTxt')} />
             </form>
-            <div>
-                <button type="button" onClick={() => (onSetNoteType('AddNoteTxt'))}>Txt</button>
+            <div  className="choose-note-typy-container">
+                <button className="icon-btn" type="button" onClick={() => (onSetNoteType('AddNoteTxt'))}>
+                    <span className="material-symbols-outlined">text_fields</span>
+                </button>
                 <input
+                    id="imgUpload"
+                    className="file-input"
                     type="file"
                     accept="image/*"
                     onChange={(ev) => {
                         handleChangeUploadImg(ev)
                         onSetNoteType('AddNoteImg')
                     }} />
-                <button onClick={() => (onSetNoteType('AddNoteTodos'))}>Todo</button>
+                <label htmlFor="imgUpload" className="icon-btn">
+                    <span className="material-symbols-outlined">image</span>
+                </label>
+                <button className="icon-btn" onClick={() => (onSetNoteType('AddNoteTodos'))}>
+                    <span className="material-symbols-outlined">check_box</span>
+                </button>
+
             </div>
         </div>
     )
