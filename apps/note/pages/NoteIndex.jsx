@@ -101,7 +101,8 @@ export function NoteIndex({ setActiveApp }) {
                         togglePinning={togglePinning}
                         onCopyNote={onCopyNote}
                         IsFullNoteEditor={IsFullNoteEditor}
-                        setIsFullNoteEditor={setIsFullNoteEditor} />
+                        setIsFullNoteEditor={setIsFullNoteEditor}
+                        onUpdateNote={onUpdateNote} />
                 </div>
                 <div className="unpinned notes-container">
                     <p>Others</p>

@@ -7,27 +7,19 @@ import { utilService } from '../../../services/util.service.js'
 import { AddNoteTxt } from "./AddNoteTxt.jsx"
 import { AddNoteImg } from "./AddNoteImg.jsx"
 import { XIcon } from '../svgs/XIcon.jsx'
+import { AddNoteTodos } from './AddNoteTodos.jsx'
 
 export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
-
     const [note, setNote] = useState(noteService.getEmptyNote())
-    // const [isEditMode, setIsEditMode] = useState(false)
     const [noteType, setNoteType] = useState('TakeANote')
-
     const params = useParams()
-
-    console.log(noteType);
 
     useEffect(() => {
         if (params.id) {
             noteService.get(params.id)
-                .then((note) => {
-                    setNote(note)
-                    // setIsEditMode(true)
-                })
+                .then(note => setNote(note))
         }
     }, [params.id])
-
 
     function handleChange({ target }) {
         const { name, value } = target
@@ -51,21 +43,65 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
         }
     }
 
+
+
     function onSaveNote(ev) {
         ev.preventDefault()
+        console.log(note);
+
+
         noteService.save(note)
-            .then(note => {
+            .then(() => {
                 loadNotes()
                 onCloseEdit()
             })
-            .catch(err => showErrorMsg(`Couldn't save ${note.id}`))
+            .catch(() => showErrorMsg(`Couldn't save ${note.id}`))
     }
 
     function onCloseEdit() {
         setNote(noteService.getEmptyNote())
         setIsFullNoteEditor(!IsFullNoteEditor)
-        // setIsEditMode(false)
         setNoteType('TakeANote')
+    }
+
+    function onChangeTodoTxt(idx, value) {
+        const updatedTodos = (note.info.todos || []).map((todo, currIdx) =>
+            currIdx === idx ? { ...todo, txt: value } : todo
+        )
+
+        setNote(prev => ({
+            ...prev,
+            info: {
+                ...prev.info,
+                todos: updatedTodos
+            }
+        }))
+    }
+
+    function onAddTodoListItem() {
+        setNote(prev => ({
+            ...prev,
+            info: {
+                ...prev.info,
+                todos: [...(prev.info.todos || []), { txt: '', isDone: false }]
+            }
+        }))
+    }
+    function onSetNoteType(noteType) {
+        
+        
+        setNoteType(noteType)
+        if (noteType === 'AddNoteTodos') {
+            console.log(noteType);
+            setNote(prev => ({
+                ...prev, type: 'NoteTodos'
+            }))
+        } else {
+            setNote(prev => ({
+                ...prev, type: noteType === 'AddNoteImg' ? 'NoteImg' : 'NoteTxt'
+            }))
+        }
+
     }
 
     function handleChangeUploadImg(ev) {
@@ -83,14 +119,6 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
         }))
     }
 
-    function onSetNoteType(noteType) {
-        setNoteType(noteType)
-        setNote(prev => ({
-            ...prev,
-            type: noteType === 'AddNoteImg' ? 'NoteImg' : 'NoteTxt'
-        }))
-    }
-
 
     return (
 
@@ -104,6 +132,9 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
             onCloseEdit={onCloseEdit}
             handleChangeUploadImg={handleChangeUploadImg}
             onSetNoteType={onSetNoteType}
+            setNote={setNote}
+            onChangeTodoTxt={onChangeTodoTxt}
+            onAddTodoListItem={onAddTodoListItem}
         />
     )
 }
@@ -114,7 +145,8 @@ function DynamicNoteAddingByType(props) {
         TakeANote: <TakeANote {...props} />,
         AddNoteImg: <AddNoteImg {...props} />,
         AddNoteTxt: <AddNoteTxt {...props} />,
-        AddNoteTodos: <AddNoteTodos {...props} />,
+        // AddNoteTodos: <AddNoteTodos {...props} />,
+        AddNoteTodos: <AddNoteTodos {...props} />
     }
 
     return cmpMap[props.cmpType]
@@ -150,4 +182,6 @@ function TakeANote({ note, handleChange, onSaveNote, handleChangeUploadImg, onSe
         </div>
     )
 }
+
+
 

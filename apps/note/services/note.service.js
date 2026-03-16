@@ -13,7 +13,9 @@ export const noteService = {
     getEmptyNote,
     getFilterFromSearchParms,
     getDefaultFilter,
-    copyNote
+    copyNote,
+    getEmptyTodo,
+    
 }
 
 // For Debug (easy access from console):
@@ -71,6 +73,9 @@ function getEmptyNote() {
             txt: ''
         }
     }
+}
+function getEmptyTodo() {
+    return [{ txt: '', isDone: false }, { txt: '', isDone: false }]
 }
 
 function getFilterFromSearchParms(searchParams) {
