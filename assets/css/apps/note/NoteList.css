@@ -1,10 +1,15 @@
  /* note list */
  .notes-container {
     margin: auto 2em 4em 2em;
+    line-height: 18pt;
 
     .is-pinned-container {
+      font-size: 12px;
+      letter-spacing: 0.8px;
+      font-weight: 500;
        text-transform: uppercase;
        margin-block-end: 1em;
+
     }
 
 
@@ -21,7 +26,7 @@
        overflow: hidden;
 
        .action-container {
-         display: flex;
+          display: flex;
           opacity: 0;
           transform: translateY(-10px);
           transition: 0.2s ease;
@@ -70,6 +75,13 @@
     }
 
 
+    .title-for-note {
+       font-size: 20px;
+       font-weight: 400;
+    }
 
+    .txt-for-note {
+       font-size: 15px;
+    }
 
  }

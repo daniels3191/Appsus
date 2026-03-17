@@ -10,20 +10,20 @@ export function NoteTodos({ info, onChangeInfo }) {
     }
 
     return <article className="note-priview" >
-        <p> {title}</p>
+        <p className="title-for-note"> {title}</p>
         <ul className="todo-container">
             {todos.map((todo, idx) => {
                 const id = `${todo.txt}-${idx}`
 
                 return (
-                    <li key={id}>
+                    <li key={id} className="txt-for-note">
                         <input
                             type="checkbox"
                             id={id}
                             checked={todo.isDone}
                             onChange={() => handleCheckboxChange(idx)}
                         />
-                        <label htmlFor={id}>{todo.txt}</label>
+                        <label  htmlFor={id}>{todo.txt}</label>
                     </li>
                 )
             })}

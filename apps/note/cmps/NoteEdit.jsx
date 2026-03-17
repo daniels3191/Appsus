@@ -188,7 +188,9 @@ function TakeANote({ note, handleChange, onSaveNote, handleChangeUploadImg, onSe
     return (
         <div className="note-edit-container" style={note.style} >
             <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote} >
-                <textarea type="text"
+                <textarea 
+                    type="text"
+                    className="title-for-note"
                     placeholder="Take a note..."
                     id="title"
                     name="title"

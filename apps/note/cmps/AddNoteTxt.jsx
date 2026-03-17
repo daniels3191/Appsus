@@ -7,7 +7,9 @@ export function AddNoteTxt({ note, handleChange, setIsFullNoteEditor, IsFullNote
     return (
         <div className="note-edit-container" style={note.style}>
             <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote} >
-                <textarea type="text"
+                <textarea 
+                    type="text"
+                    className="title-for-note"
                     placeholder="Title"
                     id="title"
                     name="title"
@@ -15,7 +17,9 @@ export function AddNoteTxt({ note, handleChange, setIsFullNoteEditor, IsFullNote
                     onChange={handleChange}
                     rows="1"
                     onClick={!IsFullNoteEditor ? () => setIsFullNoteEditor(!IsFullNoteEditor) : () => ''} />
-                <textarea type="text"
+                <textarea 
+                    type="text"
+                    className="txt-for-note"
                     placeholder="Take a note..."
                     id="txt"
                     name="txt"

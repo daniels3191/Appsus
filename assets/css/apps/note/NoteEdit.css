@@ -6,6 +6,7 @@
     width: 100%;
     min-width: 200px;
     max-width: 600px;
+    line-height: 18pt ;
 
     background-color: #fff;
     border: 1px solid transparent;
@@ -101,7 +102,7 @@
 
 .choose-note-typy-container {
     position: absolute;
-    top: 0;
+    top: 3px;
     right: 0;
 }
 
@@ -118,3 +119,12 @@
     inset: 0;
     opacity: 0;
 }
+
+   .title-for-note {
+       font-size: 20px;
+       font-weight: 400 !important; 
+    }
+
+    .txt-for-note {
+       font-size: 16px !important; 
+    }

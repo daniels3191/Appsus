@@ -128,7 +128,7 @@ function _createNotes() {
                 type: 'NoteTxt',//'NoteImg',
                 isPinned: false,
                 style: {
-                    backgroundColor: '#0d0'
+                    backgroundColor: '#d4e4ed'
                 },
                 info: {
                     title: 'Go Bobi',
@@ -166,7 +166,7 @@ function _createNotes() {
                 isPinned: false,
                 style: {
 
-                    backgroundColor: 'rgba(255, 255, 255, 1)'
+                    backgroundColor: '#fff8b8'
                 },
                 info: {
                     title: 'Dodido',
@@ -182,11 +182,12 @@ function _createNotes() {
                 isPinned: false,
                 style: {
 
-                    backgroundColor: 'rgba(255, 255, 255, 1)'
+                    backgroundColor: '#d3bfdb'
                 },
                 info: {
                     url: 'https://cdn.pixabay.com/photo/2023/01/23/13/37/flowers-7738726_1280.jpg',
-                    title: 'Bobi and Me'
+                    title: 'Bobi and Me',
+                    txt: 'my best friend'
                 }
             },
             {
