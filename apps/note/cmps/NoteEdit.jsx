@@ -25,9 +25,9 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
                     else if (note.type === 'NoteTxt') setNoteType('AddNoteTxt')
                     else setNoteType('AddNoteImg')
                 })
-
         }
     }, [params.id])
+
 
     function handleChange({ target }) {
         const { name, value } = target
@@ -51,6 +51,7 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
         }
     }
 
+
     function onSaveNote(ev) {
         ev.preventDefault()
 
@@ -62,14 +63,15 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
                 navigate('/note/')
             })
             .catch(() => showErrorMsg(`Couldn't save ${note.id}`))
-
     }
+
 
     function onCloseEdit() {
         setNote(noteService.getEmptyNote())
         setIsFullNoteEditor(!IsFullNoteEditor)
         setNoteType('TakeANote')
     }
+
 
     function onChangeTodoTxt(idx, value) {
         const updatedTodos = (note.info.todos || []).map((todo, currIdx) =>
@@ -85,6 +87,7 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
         }))
     }
 
+
     function onAddTodoListItem() {
         setNote(prev => ({
             ...prev,
@@ -94,6 +97,8 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
             }
         }))
     }
+
+
     function onSetNoteType(noteType) {
 
 
@@ -109,6 +114,7 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
             }))
         }
     }
+
 
     function handleChangeUploadImg(ev) {
         const file = ev.target.files && ev.target.files[0]
@@ -129,10 +135,10 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
             reader.onerror = () => {
                 console.error('Failed to read image file')
             }
-
         }
         reader.readAsDataURL(file)
     }
+
 
     function onChangeInfo(updatedTodos) {
 
@@ -174,7 +180,6 @@ function DynamicNoteAddingByType(props) {
         AddNoteTxt: <AddNoteTxt {...props} />,
         AddNoteTodos: <AddNoteTodos {...props} />
     }
-
     return cmpMap[props.cmpType]
 }
 
