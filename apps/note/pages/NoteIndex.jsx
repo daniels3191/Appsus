@@ -87,7 +87,7 @@ export function NoteIndex({ setActiveApp }) {
                 filterBy={filterBy}
                 setFilterBy={setFilterBy}
             />
-            <NavBar />
+            {/* <NavBar /> */}
             <div className="note-main">
                 <NoteEdit
                     loadNotes={loadNotes}

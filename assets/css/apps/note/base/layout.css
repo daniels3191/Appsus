@@ -1,19 +1,15 @@
 
 .index-main-layout{
     display: grid;
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 20px 1fr 20px;
 
    .note-header{
     grid-column: 1 / -1;
    }
-
-   .nav-bar{
-    grid-column: 1 / 2;
-   }
-
-   .note-main{
+    .note-main{
     grid-column: 2 / 3;
    }
+
 }
 
 .note-main{
