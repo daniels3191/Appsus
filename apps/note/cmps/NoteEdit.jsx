@@ -218,7 +218,6 @@ function TakeANote({ note, handleChange, onSaveNote, handleChangeUploadImg, onSe
                 <button className="icon-btn" onClick={() => (onSetNoteType('AddNoteTodos'))}>
                     <span className="material-symbols-outlined">check_box</span>
                 </button>
-
             </div>
         </div>
     )
