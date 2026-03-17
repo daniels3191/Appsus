@@ -30,13 +30,13 @@ export function NoteList({
                                 <span className="material-symbols-outlined">edit</span>
                             </button>
                         </Link>
-                        <button className="icon-btn" onClick={() => togglePinning(note)}>
+                        <button className="icon-btn" onClick={() => onCopyNote(note)}>
+                            <span className="material-symbols-outlined">copy_all</span>
+                        </button>
+                        <button className="icon-btn pin-btn" onClick={() => togglePinning(note)}>
                             <span className={`material-symbols-outlined ${note.isPinned ? 'filled' : ''}`}>
                                 push_pin
                             </span>
-                        </button>
-                        <button className="icon-btn" onClick={() => onCopyNote(note)}>
-                                <span className="material-symbols-outlined">copy_all</span>
                         </button>
                     </div>
                 </li>))}

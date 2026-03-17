@@ -13,6 +13,7 @@
     }
 
     .note-container {
+       position: relative;
        background-color: #fff;
        border: 1px solid transparent;
        border-color: #e0e0e0;
@@ -20,7 +21,7 @@
        overflow: hidden;
 
        .action-container {
-
+         display: flex;
           opacity: 0;
           transform: translateY(-10px);
           transition: 0.2s ease;
@@ -45,6 +46,13 @@
 
           .material-symbols-outlined.filled {
              font-variation-settings: 'FILL' 1;
+          }
+
+          .pin-btn {
+             /* position: absolute;
+             top: 0;
+             right: 0; */
+             margin-inline-start: auto;
           }
 
        }
