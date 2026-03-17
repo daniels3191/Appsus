@@ -55,7 +55,6 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
     function onSaveNote(ev) {
         ev.preventDefault()
 
-
         noteService.save(note)
             .then(() => {
                 loadNotes()
@@ -100,7 +99,6 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onU
 
 
     function onSetNoteType(noteType) {
-
 
         setNoteType(noteType)
         if (noteType === 'AddNoteTodos') {

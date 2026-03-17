@@ -28,7 +28,8 @@
         }
     }
 
-    .choose-note-typy-container,  .action-container {
+    .choose-note-typy-container,
+    .action-container {
         .material-symbols-outlined {
             font-size: 28px !important;
             color: #838383;
@@ -60,9 +61,6 @@
         }
 
         .file-input {
-            display: none;
-        }
-             .backgroundcolor-input{
             display: none;
         }
     }
@@ -107,7 +105,16 @@
     right: 0;
 }
 
-/* .checkbox-edit{
-        width: 40px;
 
-    } */
+.color-picker-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backgroundcolor-input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}

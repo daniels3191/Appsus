@@ -17,9 +17,9 @@ export function AddNoteTodos({
     const todos = note.info.todos || []
 
 
-        function handleCheckboxChange(idx) {
-            console.log(note.info);
-            
+    function handleCheckboxChange(idx) {
+        console.log(note.info);
+
         const updatedTodos = todos.map((todo, currIdx) =>
             currIdx === idx ? { ...todo, isDone: !todo.isDone } : todo)
         // onChangeInfo({ ...note.info, todos: updatedTodos })
@@ -49,7 +49,7 @@ export function AddNoteTodos({
                                     id={id}
                                     checked={todo.isDone}
                                     // readOnly
-                                     onChange={() => handleCheckboxChange(idx)}
+                                    onChange={() => handleCheckboxChange(idx)}
                                 />
                                 <input
                                     type="text"
@@ -64,7 +64,7 @@ export function AddNoteTodos({
                 </ul>
             </form>
 
-           <div className="action-container">
+            <div className="action-container">
                 <button className="icon-btn" type="submit" form="note-edit-form">
                     <span className="material-symbols-outlined">check</span>
                 </button>
@@ -73,11 +73,13 @@ export function AddNoteTodos({
                         <span className="material-symbols-outlined">cancel</span>
                     </button>
                 </Link>
-                <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
-                    className="backgroundcolor-input" onChange={handleChange} />
-                <label htmlFor="backgroundColor" className="icon-btn">
-                    <span className="material-symbols-outlined">palette</span>
-                </label>
+                <div className="color-picker-btn">
+                    <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
+                        className="backgroundcolor-input" onChange={handleChange} />
+                    <label htmlFor="backgroundColor" className="icon-btn">
+                        <span className="material-symbols-outlined">palette</span>
+                    </label>
+                </div>
             </div>
         </div>
     )

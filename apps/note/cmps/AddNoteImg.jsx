@@ -38,11 +38,13 @@ export function AddNoteImg({ note, handleChange, setIsFullNoteEditor, IsFullNote
                         <span className="material-symbols-outlined">cancel</span>
                     </button>
                 </Link>
+                <div className="color-picker-btn">
                 <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
                     className="backgroundcolor-input" onChange={handleChange} />
                 <label htmlFor="color-palette" className="icon-btn">
                     <span className="material-symbols-outlined">palette</span>
                 </label>
+                </div>
             </div>
         </div>
     )

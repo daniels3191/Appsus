@@ -1,7 +1,6 @@
 const { useState, useEffect } = React
 
 import { noteService } from '../services/note.service.js'
-import { SearchIcon } from '../svgs/SearchIcon.jsx'
 import { XIcon } from '../svgs/XIcon.jsx'
 
 export function NoteFilter({ filterBy, setFilterBy }) {
@@ -36,9 +35,6 @@ export function NoteFilter({ filterBy, setFilterBy }) {
 
     return (
         <div className="note-filter">
-            {/* <button className="btn-search" onClick={onSearch}>
-                <SearchIcon />
-            </button> */}
             <button className="icon-btn btn-search" type="button" onClick={onSearch}>
                 <span className="material-symbols-outlined">filter_list</span>
             </button>
