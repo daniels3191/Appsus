@@ -40,7 +40,7 @@ export function AddNoteImg({ note, handleChange, setIsFullNoteEditor, IsFullNote
                 </Link>
                 <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
                     className="backgroundcolor-input" onChange={handleChange} />
-                <label htmlFor="backgroundColor" className="icon-btn">
+                <label htmlFor="color-palette" className="icon-btn">
                     <span className="material-symbols-outlined">palette</span>
                 </label>
             </div>

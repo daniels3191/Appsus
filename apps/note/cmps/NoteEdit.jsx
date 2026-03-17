@@ -1,17 +1,18 @@
 const { useState, useEffect } = React
-const { useParams } = ReactRouterDOM
-const { Link } = ReactRouterDOM
+const { useParams, useNavigate } = ReactRouterDOM
+
 
 import { noteService } from '../services/note.service.js'
 import { utilService } from '../../../services/util.service.js'
 import { AddNoteTxt } from "./AddNoteTxt.jsx"
 import { AddNoteImg } from "./AddNoteImg.jsx"
-import { XIcon } from '../svgs/XIcon.jsx'
 import { AddNoteTodos } from './AddNoteTodos.jsx'
 
 export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
     const [note, setNote] = useState(noteService.getEmptyNote())
     const [noteType, setNoteType] = useState('TakeANote')
+
+    const navigate = useNavigate()
     const params = useParams()
 
     useEffect(() => {
@@ -52,15 +53,16 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
 
     function onSaveNote(ev) {
         ev.preventDefault()
-        console.log(note);
 
 
         noteService.save(note)
             .then(() => {
                 loadNotes()
                 onCloseEdit()
+                navigate('/note/')
             })
             .catch(() => showErrorMsg(`Couldn't save ${note.id}`))
+            
     }
 
     function onCloseEdit() {
@@ -113,15 +115,24 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
         const file = ev.target.files && ev.target.files[0]
         if (!file) return;
 
-        const url = URL.createObjectURL(file);
-        setNote(prev => ({
-            ...prev,
-            type: 'NoteImg',
-            info: {
-                ...prev.info,
-                url
+        const reader = new FileReader()
+
+        reader.onload = () => {
+            setNote(prev => ({
+                ...prev,
+                type: 'NoteImg',
+                info: {
+                    ...prev.info,
+                    url: reader.result
+                }
+            }))
+
+            reader.onerror = () => {
+                console.error('Failed to read image file')
             }
-        }))
+
+        }
+        reader.readAsDataURL(file)
     }
 
 
@@ -172,7 +183,7 @@ function TakeANote({ note, handleChange, onSaveNote, handleChangeUploadImg, onSe
                     rows="1"
                     onClick={() => onSetNoteType('AddNoteTxt')} />
             </form>
-            <div  className="choose-note-typy-container">
+            <div className="choose-note-typy-container">
                 <button className="icon-btn" type="button" onClick={() => (onSetNoteType('AddNoteTxt'))}>
                     <span className="material-symbols-outlined">text_fields</span>
                 </button>

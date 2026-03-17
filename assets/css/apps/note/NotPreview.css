@@ -11,3 +11,11 @@
 }
 
 
+.note-priview{
+    .todo-container{
+        padding: 16px;
+        li{
+            margin-block-end: 0.5em;
+        }
+    }
+}

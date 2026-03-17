@@ -2,6 +2,8 @@
 export function NoteImg({ info }) {
 
     const { title, url } = info
+    console.log(info);
+    
 
     return <article className="note-priview" >
         <p> {title}</p>

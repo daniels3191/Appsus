@@ -3,6 +3,7 @@ const { Link } = ReactRouterDOM
 import { utilService } from '../../../services/util.service.js'
 
 export function AddNoteTxt({ note, handleChange, setIsFullNoteEditor, IsFullNoteEditor, onSaveNote, onCloseEdit }) {
+
     return (
         <div className="note-edit-container" style={note.style}>
             <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote} >
