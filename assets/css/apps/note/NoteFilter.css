@@ -42,7 +42,8 @@
         cursor: pointer;
     }
 
-    .btn-search::before, .btn-clear::before {
+    .btn-search::before,
+    .btn-clear::before {
         position: absolute;
         left: 5px;
         top: 0px;
@@ -57,7 +58,8 @@
         transition: opacity 0.25s ease-out;
     }
 
-    .btn-search:hover::before, .btn-clear:hover::before {
+    .btn-search:hover::before,
+    .btn-clear:hover::before {
         opacity: 0.8;
     }
 
@@ -72,10 +74,44 @@
 
         cursor: pointer;
     }
-    
+
+    .material-symbols-outlined {
+        font-size: 28px !important;
+        color: #464545;
+    }
+
+    .icon-btn {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 50%;
+    }
+
+    label.icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 48px;
+        height: 48px;
+
+        font-size: 22px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .icon-btn:hover {
+        background-color: #e5e6e7;
+    }
 
 }
 
-.svg-search-icon, .svg-x-for-clear-button {
+.svg-search-icon,
+.svg-x-for-clear-button {
     margin: 8px;
 }
+
+
+
+.note-type-picker-modal {}
