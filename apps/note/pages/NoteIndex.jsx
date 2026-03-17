@@ -92,7 +92,8 @@ export function NoteIndex({ setActiveApp }) {
                 <NoteEdit
                     loadNotes={loadNotes}
                     IsFullNoteEditor={IsFullNoteEditor}
-                    setIsFullNoteEditor={setIsFullNoteEditor} />
+                    setIsFullNoteEditor={setIsFullNoteEditor}
+                    onUpdateNote={onUpdateNote} />
                 <div className="pinned notes-container">
                     <p className="is-pinned-container">Pinned</p>
                     <NoteList

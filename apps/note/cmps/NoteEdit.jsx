@@ -8,7 +8,7 @@ import { AddNoteTxt } from "./AddNoteTxt.jsx"
 import { AddNoteImg } from "./AddNoteImg.jsx"
 import { AddNoteTodos } from './AddNoteTodos.jsx'
 
-export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
+export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor, onUpdateNote }) {
     const [note, setNote] = useState(noteService.getEmptyNote())
     const [noteType, setNoteType] = useState('TakeANote')
 
@@ -62,7 +62,7 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
                 navigate('/note/')
             })
             .catch(() => showErrorMsg(`Couldn't save ${note.id}`))
-            
+
     }
 
     function onCloseEdit() {
@@ -108,7 +108,6 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
                 ...prev, type: noteType === 'AddNoteImg' ? 'NoteImg' : 'NoteTxt'
             }))
         }
-
     }
 
     function handleChangeUploadImg(ev) {
@@ -135,6 +134,17 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
         reader.readAsDataURL(file)
     }
 
+    function onChangeInfo(updatedTodos) {
+
+        setNote(prev => ({
+            ...prev,
+            info: {
+                ...prev.info,
+                todos: updatedTodos
+            }
+        }))
+    }
+
 
     return (
 
@@ -151,6 +161,7 @@ export function NoteEdit({ loadNotes, IsFullNoteEditor, setIsFullNoteEditor }) {
             setNote={setNote}
             onChangeTodoTxt={onChangeTodoTxt}
             onAddTodoListItem={onAddTodoListItem}
+            onChangeInfo={onChangeInfo}
         />
     )
 }
