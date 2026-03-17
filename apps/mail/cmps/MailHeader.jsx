@@ -1,15 +1,17 @@
 const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
-export function MailHeader({ filterBy, onSetFilterBy ,onToggleMenu }) {
+export function MailHeader({ filterBy, onSetFilterBy, onToggleMenu }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
   // Update mailIndex filterBy state from filterByToEdit
   useEffect(() => {
     onSetFilterBy(filterByToEdit)
   }, [filterByToEdit])
+
   useEffect(() => {
     setFilterByToEdit(filterBy)
   }, [filterBy])
+
   function handleSearch(ev) {
     const { value } = ev.target
     setFilterByToEdit((prev) => ({ ...prev, txt: value }))
@@ -27,7 +29,9 @@ export function MailHeader({ filterBy, onSetFilterBy ,onToggleMenu }) {
         </div>
       </Link>
       <div className="mail-search">
-        <span className="mail-search-icon material-symbols-outlined">search</span>
+        <span className="mail-search-icon material-symbols-outlined">
+          search
+        </span>
         <input
           onChange={(ev) => handleSearch(ev)}
           value={filterByToEdit.txt}

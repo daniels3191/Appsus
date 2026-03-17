@@ -1,7 +1,10 @@
-// • Present a mail preview
-// • Renders the subject (with text size limit)
-// • Gives visual indication for read/unread
-// • Support hover state
+// • Present a mail preview - V
+// • Renders the subject (with text size limit) - V
+// • Gives visual indication for read/unread - V
+// • Support hover state - V
+
+// Removed the archive button since I didn't work on its functionality.
+
 const { Link } = ReactRouterDOM
 import { utilService } from "../../../services/util.service.js"
 
@@ -81,9 +84,9 @@ export function MailPreview({
             </button>
           )}
 
-          <button title="Archive" className="action">
+          {/* <button title="Archive" className="action">
             <span className="material-symbols-outlined">archive</span>
-          </button>
+          </button> */}
         </div>
       </section>
     </Link>

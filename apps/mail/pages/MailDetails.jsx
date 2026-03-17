@@ -1,8 +1,10 @@
-// • Routable component (page)
-// • show the entire mail
-// • Allow deleting a mail (using the service)
-// • Allow navigating back to the list
-// • Allow navigating to next/prev emails
+// • Routable component (page) - V
+// • show the entire mail - V
+// • Allow deleting a mail (using the service) - V
+// • Allow navigating back to the list - V
+// • Allow navigating to next/prev emails - V
+
+// Removed the archive button since I didn't work on its functionality.
 
 const { useState, useEffect } = React
 const { Link, useParams, useNavigate } = ReactRouterDOM
@@ -38,12 +40,12 @@ export function MailDetails({ onRemoveMail }) {
               keyboard_backspace
             </span>
           </Link>
-          <button
+          {/* <button
             title="Archive"
             className="details-btn details-archive-button action"
           >
             <span className="material-symbols-outlined">archive</span>
-          </button>
+          </button> */}
           <button
             title="Delete"
             className="details-btn action"
@@ -63,13 +65,17 @@ export function MailDetails({ onRemoveMail }) {
           <nav>
             <Link to={`/mail/${mail.prevMailId}`}>
               <button>
-                <span className="material-symbols-outlined">arrow_top_left</span>
+                <span className="material-symbols-outlined">
+                  arrow_top_left
+                </span>
                 Prev
               </button>
             </Link>
             <Link to={`/mail/${mail.nextMailId}`}>
               <button>
-                <span className="material-symbols-outlined">arrow_top_right</span>
+                <span className="material-symbols-outlined">
+                  arrow_top_right
+                </span>
                 Next
               </button>
             </Link>
