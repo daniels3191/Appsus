@@ -15,7 +15,7 @@ export const noteService = {
     getDefaultFilter,
     copyNote,
     getEmptyTodo,
-    
+
 }
 
 // For Debug (easy access from console):
@@ -28,7 +28,12 @@ function query(filterBy = {}) {
 
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => (regExp.test(note.info.title) || regExp.test(note.info.txt)))
+                notes = notes.filter(note => (
+                    (regExp.test(note.info.title)
+                        || regExp.test(note.info.txt))
+                    || regExp.test(JSON.stringify(note.info.todos))
+                )
+                )
             }
             if (filterBy.type) {
                 notes = notes.filter(note => note.type === filterBy.type)
@@ -138,7 +143,7 @@ function _createNotes() {
                 type: 'NoteTxt',//'NoteTodos',
                 isPinned: false,
                 style: {
-                    
+
                     backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
@@ -160,7 +165,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: false,
                 style: {
-                    
+
                     backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
@@ -176,7 +181,7 @@ function _createNotes() {
                 type: 'NoteImg',
                 isPinned: false,
                 style: {
-                    
+
                     backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
@@ -190,7 +195,7 @@ function _createNotes() {
                 type: 'NoteTodos',
                 isPinned: false,
                 style: {
-                    
+
                     backgroundColor: 'rgba(255, 255, 255, 1)'
                 },
                 info: {
