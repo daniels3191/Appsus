@@ -67,40 +67,6 @@
         }
     }
 
-    /* .action-container{
-         .material-symbols-outlined {
-            font-size: 28px !important;
-            color: #838383;
-        }
-
-        .icon-btn {
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-        }
-
-        label.icon-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 48px;
-            height: 48px;
-
-            font-size: 22px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .icon-btn:hover {
-            background-color: #e5e6e7;
-        }
-   
-    }
- */
-
 }
 
 .img-container {

@@ -20,16 +20,24 @@ export function NoteList({
                         note={note}
                         onUpdateNote={onUpdateNote} />
                     <div className="action-container">
-                        <button onClick={() => onRemoveNote(note.id)}>x</button>
+                        <button className="icon-btn" onClick={() => onRemoveNote(note.id)}>
+                            <span className="material-symbols-outlined">delete</span>
+                        </button>
                         <Link to={`/note/${note.id}`} >
                             <button
-                                className='btn-note-edit'
+                                className='icon-btn btn-note-edit'
                                 onClick={!IsFullNoteEditor ? () => setIsFullNoteEditor(!IsFullNoteEditor) : () => ''}>
-                                Edit
+                                <span className="material-symbols-outlined">edit</span>
                             </button>
                         </Link>
-                        <button onClick={() => togglePinning(note)}>Tpinning</button>
-                        <button onClick={() => onCopyNote(note)}>Copy</button>
+                        <button className="icon-btn" onClick={() => togglePinning(note)}>
+                            <span className={`material-symbols-outlined ${note.isPinned ? 'filled' : ''}`}>
+                                push_pin
+                            </span>
+                        </button>
+                        <button className="icon-btn" onClick={() => onCopyNote(note)}>
+                                <span className="material-symbols-outlined">copy_all</span>
+                        </button>
                     </div>
                 </li>))}
         </ul>
