@@ -52,19 +52,20 @@ export function AddNoteTodos({
                 </ul>
             </form>
 
-            <div className="action-container">
-                <button type="submit" form="note-edit-form">Save</button>
-                <Link to="/note/">
-                    <button type="button" onClick={onCloseEdit}>Close</button>
+           <div className="action-container">
+                <button className="icon-btn" type="submit" form="note-edit-form">
+                    <span className="material-symbols-outlined">check</span>
+                </button>
+                <Link to={'/note/'}>
+                    <button className="icon-btn" type="button" onClick={onCloseEdit}>
+                        <span className="material-symbols-outlined">cancel</span>
+                    </button>
                 </Link>
-                <input
-                    value={utilService.normalizeHex(note.style.backgroundColor)}
-                    type="color"
-                    id="backgroundColor"
-                    name="backgroundColor"
-                    className="backgroundcolor-input"
-                    onChange={handleChange}
-                />
+                <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
+                    className="backgroundcolor-input" onChange={handleChange} />
+                <label htmlFor="backgroundColor" className="icon-btn">
+                    <span className="material-symbols-outlined">palette</span>
+                </label>
             </div>
         </div>
     )

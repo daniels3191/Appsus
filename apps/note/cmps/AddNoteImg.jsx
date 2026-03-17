@@ -5,12 +5,12 @@ import { utilService } from '../../../services/util.service.js'
 export function AddNoteImg({ note, handleChange, setIsFullNoteEditor, IsFullNoteEditor, onSaveNote, onCloseEdit }) {
     return (
         <div className="note-edit-container" style={note.style}>
-               {note.info.url && (
+            {note.info.url && (
                 <div className="img-container">
                     <img src={note.info.url} alt="Uploaded preview" />
                 </div>
 
-                )}
+            )}
             <form className="note-edit-form" id="note-edit-form" onSubmit={onSaveNote} >
                 <textarea type="text"
                     placeholder="Title"
@@ -30,12 +30,19 @@ export function AddNoteImg({ note, handleChange, setIsFullNoteEditor, IsFullNote
             </form>
 
             <div className="action-container">
-                <button type="submit" form="note-edit-form">Save</button>
+                <button className="icon-btn" type="submit" form="note-edit-form">
+                    <span className="material-symbols-outlined">check</span>
+                </button>
                 <Link to={'/note/'}>
-                    <button type="button" onClick={onCloseEdit}>Close</button>
+                    <button className="icon-btn" type="button" onClick={onCloseEdit}>
+                        <span className="material-symbols-outlined">cancel</span>
+                    </button>
                 </Link>
                 <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
                     className="backgroundcolor-input" onChange={handleChange} />
+                <label htmlFor="backgroundColor" className="icon-btn">
+                    <span className="material-symbols-outlined">palette</span>
+                </label>
             </div>
         </div>
     )

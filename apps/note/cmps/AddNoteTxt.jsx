@@ -22,14 +22,20 @@ export function AddNoteTxt({ note, handleChange, setIsFullNoteEditor, IsFullNote
                     onChange={handleChange}
                     rows="1" />
             </form>
-
             <div className="action-container">
-                <button type="submit" form="note-edit-form">Save</button>
+                <button className="icon-btn" type="submit" form="note-edit-form">
+                    <span className="material-symbols-outlined">check</span>
+                </button>
                 <Link to={'/note/'}>
-                    <button type="button" onClick={onCloseEdit}>Close</button>
+                    <button className="icon-btn" type="button" onClick={onCloseEdit}>
+                        <span className="material-symbols-outlined">cancel</span>
+                    </button>
                 </Link>
                 <input value={utilService.normalizeHex(note.style.backgroundColor)} type="color" id="backgroundColor" name="backgroundColor"
                     className="backgroundcolor-input" onChange={handleChange} />
+                <label htmlFor="backgroundColor" className="icon-btn">
+                    <span className="material-symbols-outlined">palette</span>
+                </label>
             </div>
         </div>)
 }
