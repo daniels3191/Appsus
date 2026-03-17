@@ -1,4 +1,4 @@
-// • Renders a list of <MailPreview> pass down a mail prop
+// • Renders a list of <MailPreview> pass down a mail prop - V
 import { MailPreview } from "./MailPreview.jsx"
 export function MailList({
   mails,

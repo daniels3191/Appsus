@@ -1,5 +1,5 @@
-// • Display a form with: to, subject and body
-// • Use the service to send a mail (add a mail to the list)
+// • Display a form with: to, subject and body - V
+// • Use the service to send a mail (add a mail to the list) - V
 
 const { useEffect, useState } = React
 

@@ -27,7 +27,7 @@
   }
   input {
     color: #747775;
-    padding: 10px;
+    padding: 10px 16px;
     border: none;
     background-color: white;
     outline: none;
@@ -37,6 +37,7 @@
     flex: 1;
     border: none;
     outline: none;
+    padding: 0 16px;
   }
   .compose-modal-footer {
     display: flex;

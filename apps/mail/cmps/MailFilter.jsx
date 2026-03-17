@@ -1,5 +1,5 @@
-// • Allow filtering
-// • Start with Search and Read / Unread
+// • Allow filtering - V
+// • Start with Search and Read / Unread - V
 
 const { useState, useEffect } = React
 export function MailFilter({ filterBy, onSetFilterBy, onClearFilter }) {
