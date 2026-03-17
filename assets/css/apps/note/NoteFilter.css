@@ -1,6 +1,6 @@
 .note-filter {
     position: relative;
-    margin-inline-start: 1em;
+    margin-inline-start: 3em;
 
     justify-self: center;
     width: 100%;
@@ -13,8 +13,8 @@
     border: 1px solid transparent;
     border-color: #e0e0e0;
     border-radius: 8px;
-    margin-inline-start: 10px;
-    margin-inline-end: 30px;
+    margin-inline-start: 2em;
+    margin-inline-end: 2קצ;
 
     overflow: hidden;
 

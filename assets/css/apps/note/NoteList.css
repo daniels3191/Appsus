@@ -2,9 +2,9 @@
  .notes-container {
     margin: auto 2em 4em 2em;
 
-    p {
+    .is-pinned-container {
        text-transform: uppercase;
-       margin: 0px;
+       margin-block-end: 1em;
     }
 
 

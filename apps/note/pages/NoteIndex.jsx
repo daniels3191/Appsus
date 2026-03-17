@@ -94,7 +94,7 @@ export function NoteIndex({ setActiveApp }) {
                     IsFullNoteEditor={IsFullNoteEditor}
                     setIsFullNoteEditor={setIsFullNoteEditor} />
                 <div className="pinned notes-container">
-                    <p>Pinned</p>
+                    <p className="is-pinned-container">Pinned</p>
                     <NoteList
                         notes={getFilterdPinedNotes(true, notes)}
                         onRemoveNote={removeNote}
@@ -105,7 +105,7 @@ export function NoteIndex({ setActiveApp }) {
                         onUpdateNote={onUpdateNote} />
                 </div>
                 <div className="unpinned notes-container">
-                    <p>Others</p>
+                    <p className="is-pinned-container">Others</p>
                     <NoteList
                         notes={getFilterdPinedNotes(false, notes)}
                         onRemoveNote={removeNote}
