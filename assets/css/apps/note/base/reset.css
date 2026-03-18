@@ -30,7 +30,7 @@ a[class] {
     color: inherit;
 }
 
-input, button, textarea, select {
+input,  textarea, select {
     max-width: 100%;
     font: inherit;
 }

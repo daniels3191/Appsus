@@ -42,6 +42,7 @@
             cursor: pointer;
             padding: 8px;
             border-radius: 50%;
+
         }
 
         label.icon-btn {
@@ -103,7 +104,7 @@
 .choose-note-typy-container {
     position: absolute;
     top: 3px;
-    right: 0;
+    right: 3px;
 }
 
 
